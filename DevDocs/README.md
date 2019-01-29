@@ -1,18 +1,18 @@
 # Dev Team 
-Project Owner: Zeyuan Jiang 
-Scrum Master : Kevin Wang 
-Developers   : Sean Bell 
-               Samir Shingane 
-               Christian Hernandez 
+Project Owner: Zeyuan Jiang   
+Scrum Master : Kevin Wang  
+Developers   : Sean Bell  
+               Samir Shingane  
+               Christian Hernandez  
                
 # Contacts 
-Robert Kemp    rakemp@ucsc.edu 
-Russell Evans  rwevans@ucsc.edu 
+Robert Kemp    rakemp@ucsc.edu  
+Russell Evans  rwevans@ucsc.edu  
 
 ## TA Meetings
-Tuesdays 8:30AM @ Physical Sciences 110 
+Tue 8:30AM @ PSB 110  
 
 ## Sprint Meetings 
-Sundays 8:30PM
-
-## Sponsor Meetings
+Sun 8:30PM  
+Tue 9:00AM @ PSB 110  
+Thu 2:00PM @ JBE  
