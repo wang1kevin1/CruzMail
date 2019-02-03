@@ -7,5 +7,5 @@ Project development resources and documentation.
 ## ScrumDocs
 Documentation of our SCRUM process.
 
-## CruzMail
-Product source code and resources.
+## pre-release-1.0
+Product source code and resources for Pre Release build 1.0.
