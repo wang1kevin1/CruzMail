@@ -8,7 +8,8 @@ Developers   : Sean Bell
                Samir Shingane  
                Christian Hernandez  
                
-## Contacts 
+## TA/Contacts 
+Dylan Rothfeld drothfel@ucsc.edu
 Robert Kemp    rakemp@ucsc.edu  
 Russell Evans  rwevans@ucsc.edu  
 
