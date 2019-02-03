@@ -20,4 +20,4 @@ HTML:
 CSS:
 - CSS standard coding style
 
-<DatabaseLanguage>:
+MySQL:
