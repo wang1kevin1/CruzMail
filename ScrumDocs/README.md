@@ -9,7 +9,7 @@ Developers   : Sean Bell
                Christian Hernandez  
                
 ## TA/Contacts 
-Dylan Rothfeld drothfel@ucsc.edu
+Dylan Rothfeld drothfel@ucsc.edu  
 Robert Kemp    rakemp@ucsc.edu  
 Russell Evans  rwevans@ucsc.edu  
 
