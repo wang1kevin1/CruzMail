@@ -13,10 +13,23 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url, include
+from django.views.static import serve
+from django.conf import settings
 from django.contrib import admin
-from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    #url(r'^$', views.index, name="index")
+    url(r'^$', views.index, name="index"),
+    url(r'^admin/', admin.site.urls)
+   # url(r'^collection/', include('cruzmail.collection.urls')),
+   # url(r'^account/', include('cruzmail.account.urls')),
+   # url(r'^inbox/', include('cruzmail.inbox.urls'))
 ]
+
+if settings.DEBUG:
+    urlpatterns += [
+        url(r'^media/(?P<path>.*)$', serve, {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    ]
