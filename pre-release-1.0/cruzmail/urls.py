@@ -22,6 +22,7 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name="index"),
     url(r'^admin/', admin.site.urls)
+    url(r'^menu/', views.menu, name="menu")
    # url(r'^collection/', include('cruzmail.collection.urls')),
    # url(r'^account/', include('cruzmail.account.urls')),
    # url(r'^inbox/', include('cruzmail.inbox.urls'))
