@@ -1,4 +1,6 @@
 === Coding Standards ===
+Python: 3.7.2
+Django: 2.0.6
 
 General Commenting:
 - Block comments before every method/class.
