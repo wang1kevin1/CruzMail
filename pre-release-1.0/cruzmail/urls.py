@@ -31,11 +31,10 @@ urlpatterns = [
    
 
     path('manage/', ManagePageViews.as_view(), name='manage'),
-    path('',        HomePageViews.as_view(),   name='home')
-
+    path('',        HomePageViews.as_view(),   name='home'),
 
    # url(r'^collection/', include('cruzmail.collection.urls')),
-   # url(r'^account/', include('cruzmail.account.urls')),
+    url(r'^account/', include('cruzmail.account.urls')),
    # url(r'^inbox/', include('cruzmail.inbox.urls'))
 ]
 
