@@ -25,7 +25,7 @@ SECRET_KEY = '7_=0u17^xlw8cwcp6z(9&_+a*@wmk@f7v0__&ialz1ily8gzgx'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0']
 
 
 # Application definition
@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cruzmail'
+    'cruzmail',
     #'cruzmail.collection',
-    #'cruzmail.account',
+    'cruzmail.account',
     #'cruzmail.inbox',
 ]
 
