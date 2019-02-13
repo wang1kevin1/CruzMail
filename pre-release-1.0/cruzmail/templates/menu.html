@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <style>
         @import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
 
         :root {
-          --background: rgba(0, 214, 170, .85);
+          --background: #2E5A7D
         }
         
+        /*
+          #305371 for background
+          #2C5779 nav bar 
+        */
         *, *::before, *::after {
           box-sizing: border-box;
         }
         
         body {
             margin: 0;
-            background: #222;
+            background: #305371;
             font-family: 'Work Sans', sans-serif;
             font-weight: 400;
         }
@@ -23,7 +26,7 @@
         .content {
           height: 200vh;
           background-image: url(//unsplash.it/1000/1000);
-          background-color: #333;
+          background-color: #333; /*    */
           background-blend-mode: multiply;
           background-size: cover;
           display: grid;
@@ -36,12 +39,11 @@
           background: var(--background);
           text-align: center;
           position: fixed;
-          z-index: 999;
+          z-index: 999; 
           width: 100%;
         }
         
-        /* changed this from the tutorial video to
-           allow it to gain focus, making it tabbable */
+        /*stuff i just found online*/
         .nav-toggle {
           position: absolute !important;
           top: -9999px !important;
@@ -147,9 +149,7 @@
           }
           
           nav {
-            // all: unset; /* this causes issues with Edge, since it's unsupported */
-            
-            /* the following lines are not from my video, but add Edge support */
+        /*  this block needed for edge support*/
             position: relative;
             text-align: left;
             transition: none;
@@ -157,8 +157,8 @@
             background: none;
             top: initial;
             left: initial;
-            /* end Edge support stuff */
-            
+          
+            /*grid for where to align title */
             grid-column: 3 / 4;
             display: flex;
             justify-content: flex-end;
@@ -196,8 +196,80 @@
             transform: scale(1,1);
           }
         }
+      
+  button {
+    position: absolute;
+    /*top: 35%;
+    left: 30%;*/
+    transform: translate(-50%, -50%);
+  }
+
+button {
+    background: none;
+    color:#ccc;
+    width: 80px;
+    height: 80px;
+    border: 2px solid #fff;
+    font-size: 18px;
+    border-radius: 4px;
+    transition: .6s;
+    overflow: hidden;
+
+}
+button:hover{
+    background: #5c5b5b;
+    cursor: pointer;
+
+
+}
+
+/*button:focus {
+    outline: none;
+}
+button:before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255,255,255, .5);
+    width: 60px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: .5s;
+    filter: blur(30px);
+    transform: translateX(-130px) skewX(-15deg);
+}
+
+button:after{
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255,255,255, .2);
+    width: 30px;
+    height: 100%;
+    left: 30px;
+    top: 0;
+    opacity: 0;
+    filter: blur(30px);
+    transform: translate(-100px) scaleX(-15deg);
+}
+
+
+button:hover:before {
+    transform: translateX(300px) skewX(-15deg);
+    opacity: .6;
+    transition: .7s;
+  
+ }
+ 
+ button:hover:after {
+    transform: translateX(300px) skewX(-15deg);
+    opacity: 1;
+    transition: .7s;
+    
+ }*/
         
-    </style>
+ </style>
         
 
 
@@ -208,9 +280,12 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <title>Cruz Mail</title>
+
+    <!-- STYLE FOR THIS PAGE---------------->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <header>
-        <h1 class="logo">Logo</h1>
-        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <h1 class="logo">CruzMail</h1>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" >
         <nav>
           <ul>
             <li><a href="#">Home</a></li>
@@ -222,10 +297,16 @@
         <label for="nav-toggle" class="nav-toggle-label">
           <span></span>
         </label>
-      </header>
-
+    </header>
 </head>
 <body>
-    Hello Sir
+    <div class="wrapper">
+      <div class="btn">
+        <button type ="button" style="top: 35%; left: 30%; position: fixed;">Packages</button>
+        <button type ="button" style="top: 50%; left: 30%; ">Mail Stops</button>
+        <button type ="button" style="top: 35%; left:70%">People</button>
+        <button type ="button" style="top: 50%; left:70%">Help Center</button>
+      </div>
+    </div>
 </body>
 </html> 
