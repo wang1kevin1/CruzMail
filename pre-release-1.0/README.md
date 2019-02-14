@@ -33,25 +33,25 @@ $ sudo ufw allow mysql
 
 Start the MySQL service and enable it to launch at reboot:
 ```
-$ systemctl start mysql
-$ systemctl enable mysql
+$ sudo systemctl start mysql
+$ sudo systemctl enable mysql
 ```
 
 Start the MySQL shell:
 ```
-$ mysql -u root -p
+$ sudo mysql -u root -p
 ```
 
 ### Creating the Database
 
 Download cruzmail_db.sql. Change directory to its location and run:
 ```
-$ mysql < cruzmail_db.sql
+$ sudo mysql < cruzmail_db.sql
 ```
 
 ### Testing the Installation
 
 After installing the database, you can display output in table format as such:
 ```
-mysql -t < cruzmail_db.sql
+$ sudo mysql -t < cruzmail_db.sql
 ```
