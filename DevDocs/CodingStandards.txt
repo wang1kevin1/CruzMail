@@ -1,6 +1,7 @@
 === Coding Standards ===
 Python: 3.7.2
 Django: 2.0.6
+MySQL : 5.7.25
 
 General Commenting:
 - Block comments before every method/class.
@@ -22,4 +23,3 @@ HTML:
 CSS:
 - CSS standard coding style
 
-MySQL:
