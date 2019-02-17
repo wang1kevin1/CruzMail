@@ -26,14 +26,14 @@ from django.views.generic import TemplateView
 
 
 urlpatterns = [
-    #url(r'^$', views.index, name="index"),
+    url(r'^$', views.index, name="index"),
     url(r'^admin/', admin.site.urls),
    
 
     path('manage/', ManagePageViews.as_view(), name='manage'),
     path('',        HomePageViews.as_view(),   name='home'),
 
-   # url(r'^collection/', include('cruzmail.collection.urls')),
+    #url(r'^collection/', include('cruzmail.collection.urls')),
     url(r'^account/', include('cruzmail.account.urls')),
    # url(r'^inbox/', include('cruzmail.inbox.urls'))
 ]

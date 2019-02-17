@@ -74,6 +74,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cruzmail.wsgi.application'
 
+LOGIN_REDIRECT_URL = '/manage'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
