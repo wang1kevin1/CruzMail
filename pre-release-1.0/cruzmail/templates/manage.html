@@ -1,0 +1,78 @@
+{% load staticfiles %}
+<html>	
+    <head>
+    </head> 
+    <body>
+
+<!--...................................Header for Manage................................................................-->
+	<div id="my_view">
+            <div class="body">
+	        <div class="row">
+    		    <div class="pic_column">
+	                <img src="{% static 'img/mail.png' %}" style="width:200px;height:200px;">
+		    </div>
+
+		    <div class="title_column" v-on:click="sort();">
+	     	            Packages 
+		    </div>
+
+		    <div class="pic_column">
+		        <img src="{% static 'img/back.png' %}" style="width:75px;height:75px;">
+		    </div>
+	        </div>
+            </div>
+
+            <textarea class="list" v-model="test">
+		    ${test}
+	    </textarea>
+
+
+<!--...................................List Of Packages................................................................-->
+	    <div class="list2">
+		    <div class="row">
+		    <div style="float:left;width:2%;border-right:1px solid black;">
+		        <input type="checkbox">
+		        </input>
+		    </div>
+		    <div class="col_title"> 
+		        Tracking#
+	 	    </div>
+		    <div class="col_title">
+		        Reciever Name
+		    </div>
+		    <div class="col_title">
+                        Recieve Date
+                     </div>
+
+	        </div>
+		<div style="border-bottom:10px"></div>
+	        <div v-for="info in Info"m v-if="!(test.length > info.c.length) &&
+						  (test == '' || 
+						   test == info.c.substring(0, test.length))">
+    	            <div class="row" style="background-color:solid black">		
+                        <div style="float:left;width:2%;border-right:1px solid black;">
+                            <input type="checkbox">
+                            </input>
+                        </div>
+                        <div class="col_title">
+				${info.a}
+                        </div>
+                        <div class="col_title">
+				${info.b}
+                        </div>
+                        <div class="col_title">
+				${info.c}
+                        </div>
+                    </div>
+                </div>
+   	    </div>
+	</div>
+
+
+	<script src="{% static 'js/vue.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+        <script src="{% static 'js/manage_html.js' %}"></script>
+        <link href="{% static 'css/manage.css' %}" rel="stylesheet">
+
+    </body>
+</html>

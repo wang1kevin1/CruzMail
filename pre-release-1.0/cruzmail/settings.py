@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '7_=0u17^xlw8cwcp6z(9&_+a*@wmk@f7v0__&ialz1ily8gzgx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True #MAKE FALSE ONCE WE DEPLOY!
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0']
 
 
 # Application definition
@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cruzmail'
+    'cruzmail',
+    'rest_framework',
     #'cruzmail.collection',
-    #'cruzmail.account',
+    'cruzmail.account',
     #'cruzmail.inbox',
 ]
 
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'cruzmail.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,3 +124,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '_static_root')
+
+ALLOWED_HOSTS = ['192.168.56.1', '127.0.0.1']
