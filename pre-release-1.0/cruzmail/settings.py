@@ -25,7 +25,7 @@ SECRET_KEY = '7_=0u17^xlw8cwcp6z(9&_+a*@wmk@f7v0__&ialz1ily8gzgx'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0']
+#ALLOWED_HOSTS = ['0.0.0.0']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     #'cruzmail.collection',
     'cruzmail.account',
+    'cruzmail.collection'
     #'cruzmail.inbox',
 ]
 
@@ -80,8 +81,12 @@ WSGI_APPLICATION = 'cruzmail.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cruzmail',
+        'USER': 'root',
+        'PASSWORD' : 'hihihihi1',
+        'HOST' : '127.0.0.1',
+        'PORT' : '3306',
     }
 }
 
