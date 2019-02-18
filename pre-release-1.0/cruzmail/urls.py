@@ -26,7 +26,7 @@ from django.views.generic import TemplateView
 
 
 urlpatterns = [
-    #url(r'^$', views.index, name="index"),
+    url(r'^$', views.index, name="index"),
     url(r'^admin/', admin.site.urls),
    
 
@@ -34,7 +34,7 @@ urlpatterns = [
     path('',        HomePageViews.as_view(),   name='home'),
     path('menu/', MenuPageViews.as_view(), name='menu'),
 
-   # url(r'^collection/', include('cruzmail.collection.urls')),
+    #url(r'^collection/', include('cruzmail.collection.urls')),
     url(r'^account/', include('cruzmail.account.urls')),
    # url(r'^inbox/', include('cruzmail.inbox.urls'))
 ]
