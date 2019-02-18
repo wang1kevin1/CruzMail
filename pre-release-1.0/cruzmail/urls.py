@@ -34,9 +34,13 @@ urlpatterns = [
     path('',        HomePageViews.as_view(),   name='home'),
     path('menu/', MenuPageViews.as_view(), name='menu'),
 
-   # url(r'^collection/', include('cruzmail.collection.urls')),
+    #url(r'^collection/', include('cruzmail.collection.urls')),
     url(r'^account/', include('cruzmail.account.urls')),
-   # url(r'^inbox/', include('cruzmail.inbox.urls'))
+    # url(r'^inbox/', include('cruzmail.inbox.urls'))
+
+    #write new python urls here
+    #url(r'collection/^$',views.new_package, name='new_package')
+    path(r'^new_package$', views.new_package, name='new_package'),
 ]
 
 if settings.DEBUG:

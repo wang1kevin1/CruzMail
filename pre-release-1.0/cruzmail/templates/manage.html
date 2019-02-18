@@ -6,13 +6,14 @@
 
 <!--...................................Header for Manage................................................................-->
 	<div id="my_view">
+	    
             <div class="body">
 	        <div class="row">
     		    <div class="pic_column">
 	                <img src="{% static 'img/mail.png' %}" style="width:200px;height:200px;">
 		    </div>
 
-		    <div class="title_column" v-on:click="sort();">
+		    <div class="title_column" v-on:click="newPackage();">
 	     	            Packages 
 		    </div>
 
@@ -69,6 +70,7 @@
 	</div>
 
 
+	<script src="{% static 'js/jquery-3.2.1.js' %}"></script>
 	<script src="{% static 'js/vue.js' %}"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
         <script src="{% static 'js/manage_html.js' %}"></script>

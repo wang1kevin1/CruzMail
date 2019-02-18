@@ -10,6 +10,22 @@ var myModel = {
     name2: "asdadsf",
 };
 
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
 var myViewModel = new Vue({
     el: '#my_view',
     delimiters:['${', '}'],
@@ -17,8 +33,20 @@ var myViewModel = new Vue({
     
     methods: {
 	sort: sorts = function(){
-	     console.log(myViewModel.test);
+	    console.log(myViewModel.test);
 
+	},
+	newPackage: newPackages = function(){
+	    $.ajax({ type: "POST",
+		     url:  '' ,
+		     data:{}, 
+		     success: function good(response){
+		         console.log(response);
+		     },
+		     error: function(response){
+			 console.log("ded\n");
+		     }
+	    });
 	}
 
     }
