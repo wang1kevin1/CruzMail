@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse
+from django.http import *
+from .models import User_Profile
 
-# Create your views here.
+def collection(request):
+	profile = get_object_or_404(User_Profile)
+	return render(request, 'collection/users.html', {'profile': profile})

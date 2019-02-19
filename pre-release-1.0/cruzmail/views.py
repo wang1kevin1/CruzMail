@@ -13,3 +13,6 @@ class ManagePageViews(TemplateView):
 
 class MenuPageViews(TemplateView):
     template_name = 'menu.html'
+
+class CollectionPageViews(TemplateView):
+    template_name = 'users.html'

@@ -11,6 +11,7 @@ from django.contrib.auth.tokens import *
 # Create your models here.
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	#users = User.objects.all()
 	bio = models.CharField(max_length=2000, default="")
 	private_account = models.BooleanField(default=True)
 
@@ -23,6 +24,9 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
 	instance.profile.save()
+
+def users_list(self):
+	users = User.objects.all()
 
 def publish(self):
 	self.save()
