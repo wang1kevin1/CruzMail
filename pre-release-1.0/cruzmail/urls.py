@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.views.static import serve
 from django.conf import settings
 from django.contrib import admin
-from . import views
+from .import views
 
 #new.....
 from .views import HomePageViews, ManagePageViews, MenuPageViews
@@ -40,7 +40,7 @@ urlpatterns = [
 
     #write new python urls here
     #url(r'collection/^$',views.new_package, name='new_package')
-    path(r'^new_package$', views.new_package, name='new_package'),
+    url(r'^new_package', views.new_package, name='new_package'),
 ]
 
 if settings.DEBUG:

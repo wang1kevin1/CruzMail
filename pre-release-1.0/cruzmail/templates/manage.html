@@ -1,4 +1,6 @@
+
 {% load staticfiles %}
+
 <html>	
     <head>
     </head> 
@@ -26,6 +28,12 @@
             <textarea class="list" v-model="test">
 		    ${test}
 	    </textarea>
+	    <textarea class="list" v-model="new_mailstop">
+                    ${new_mailstop}
+            </textarea>
+	    <textarea class="list" v-model="new_route">
+                    ${new_route}
+            </textarea>
 
 
 <!--...................................List Of Packages................................................................-->
@@ -47,9 +55,7 @@
 
 	        </div>
 		<div style="border-bottom:10px"></div>
-	        <div v-for="info in Info"m v-if="!(test.length > info.c.length) &&
-						  (test == '' || 
-						   test == info.c.substring(0, test.length))">
+	        <div v-for="info in Info">
     	            <div class="row" style="background-color:solid black">		
                         <div style="float:left;width:2%;border-right:1px solid black;">
                             <input type="checkbox">
@@ -72,7 +78,6 @@
 
 	<script src="{% static 'js/jquery-3.2.1.js' %}"></script>
 	<script src="{% static 'js/vue.js' %}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
         <script src="{% static 'js/manage_html.js' %}"></script>
         <link href="{% static 'css/manage.css' %}" rel="stylesheet">
 

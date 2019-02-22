@@ -1,13 +1,14 @@
 var myModel = {
     name: "Ashley",
-    test: 'asd',
+    test: 'asdsa', 
+    new_mailstop: 'a',
+    new_route: 'a',
     loading: 24,
     Info: [ {a:1111111, b:"Michael", c:"Mora"},
  	    {a:2222222, b:"Chris"  , c:"UCSC"},
             {a:3333333, b:"Samir"  , c:"SC"},
             {a:4444444, b:"Kevin"  , c:"SC"},
     	    {a:5555555, b:"Sean"   , c:"SC"}],
-    name2: "asdadsf",
 };
 
 function getCookie(name) {
@@ -26,6 +27,8 @@ function getCookie(name) {
     return cookieValue;
 }
 var csrftoken = getCookie('csrftoken');
+
+
 var myViewModel = new Vue({
     el: '#my_view',
     delimiters:['${', '}'],
@@ -38,10 +41,16 @@ var myViewModel = new Vue({
 	},
 	newPackage: newPackages = function(){
 	    $.ajax({ type: "POST",
-		     url:  '' ,
-		     data:{}, 
+		     url:  '/new_package' ,
+		     data:{"new_m": myViewModel.new_mailstop,
+		           "new_r": myViewModel.new_route}, 
+		     dataType: 'json',
 		     success: function good(response){
-		         console.log(response);
+			 myViewModel.Info = [];
+		         for(var key in response){
+				myViewModel.Info.push(key);
+				console.log(myViewModel.Info);
+			 }
 		     },
 		     error: function(response){
 			 console.log("ded\n");

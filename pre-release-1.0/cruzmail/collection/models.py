@@ -17,7 +17,8 @@ class mailstops_master(models.Model):
         ('c', 'central'),
         ('e', 'east'))
     ms_route  = models.CharField(max_length = 1, choices = ms_route_choice)
-
+    
+    
 
 
 class people_master(models.Model):
