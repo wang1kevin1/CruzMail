@@ -10,7 +10,8 @@ from django.contrib.auth.tokens import *
 
 # Create your models here.
 class User_Profile(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	#user = models.OneToOneField(User, on_delete=models.CASCADE)
 	users = User.objects.all()
-	bio = models.CharField(max_length=2000, default="")
-	private_account = models.BooleanField(default=True)
+	#print("hello")
+	#bio = models.CharField(max_length=2000, default="")
+	#private_account = models.BooleanField(default=True)

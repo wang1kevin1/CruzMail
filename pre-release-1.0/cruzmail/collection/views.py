@@ -5,4 +5,4 @@ from .models import User_Profile
 
 def collection(request):
 	profile = get_object_or_404(User_Profile)
-	return render(request, 'collection/users.html', {'profile': profile})
+	return render(request, 'users.html', {'profile': profile})
