@@ -24,15 +24,16 @@ class mailstops_master(models.Model):
 class people_master(models.Model):
     name     = models.CharField(max_length = 20, primary_key = True)
     email    = models.CharField(max_length = 20)
-    mailstop = models.ForeignKey(mailstops_master, on_delete=models.DO_NOTHING)
+    #mailstop = models.ForeignKey(mailstops_master, on_delete=models.DO_NOTHING)
 
 
 
 
 class packages_master(models.Model):
     pkg_tracking = models.CharField(max_length = 20, primary_key = True)
-    name         = models.ForeignKey(people_master, on_delete=models.DO_NOTHING)
-    mailstop     = models.ForeignKey(mailstops_master, on_delete=models.DO_NOTHING)
+    name         = models.CharField(max_length = 20)#models.ForeignKey(people_master, on_delete=models.DO_NOTHING)
+    mailstop     = models.CharField(max_length = 20)#models.CharField(max_length = 20, primary_key = True)
+
 
     pkg_status_choice = (
         ('r', 'recieved'),

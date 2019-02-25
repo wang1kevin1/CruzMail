@@ -1,33 +1,17 @@
 var myModel = {
     name: "Ashley",
     test: 'asdsa', 
-    new_mailstop: 'a',
-    new_route: 'a',
-    loading: 24,
-    Info: [ {a:1111111, b:"Michael", c:"Mora"},
- 	    {a:2222222, b:"Chris"  , c:"UCSC"},
-            {a:3333333, b:"Samir"  , c:"SC"},
-            {a:4444444, b:"Kevin"  , c:"SC"},
-    	    {a:5555555, b:"Sean"   , c:"SC"}],
+    new_mailstop: '',
+    new_route: '',
+    index: 0,
+    
+    new_tracknum: '',
+    new_name: '',
+    new_sign: '',
+    new_email: '',
+    new_remark: '',
+    Info: [],
 };
-
-function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = jQuery.trim(cookies[i]);
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-var csrftoken = getCookie('csrftoken');
-
 
 var myViewModel = new Vue({
     el: '#my_view',
@@ -35,25 +19,75 @@ var myViewModel = new Vue({
     data: myModel,
     
     methods: {
-	sort: sorts = function(){
-	    console.log(myViewModel.test);
+	addPackage: addPackages = function(){
+	    $.ajax({ type: "POST",
+                     url:  '/add_package' ,
+                     data:{"track":    myViewModel.new_tracknum,
+			   "name":     myViewModel.new_name,
+			   "mailstop": myViewModel.new_mailstop,
+		           "sign":     myViewModel.new_sign,
+		           "email":    myViewModel.new_email,
+		           "remark":   myViewModel.new_remark},
+                     dataType: 'json',
+                     success: function no(response){
+                     },
+                     error: function(response){
+                         console.log("invalid inputs\n");
+                     }
+            });
 
 	},
-	newPackage: newPackages = function(){
+	updatePackage: updatePackages = function(){
 	    $.ajax({ type: "POST",
-		     url:  '/new_package' ,
-		     data:{"new_m": myViewModel.new_mailstop,
-		           "new_r": myViewModel.new_route}, 
+                     url:  '/query_package' ,
+                     data:{
+                           "index": myViewModel.index * 10},
+                     dataType: 'json',
+                     success: function no(response){
+                     },
+                     error: function(response){
+                         console.log("invalid inputs\n");
+                     }
+            });
+
+	},
+	packageDelivered: packagesDelivered = function(){
+	    $.ajax({ type: "POST",
+                     url:  '/query_package' ,
+                     data:{
+                           "index": myViewModel.index * 10},
+                     dataType: 'json',
+                     success: function no(response){
+                     },
+                     error: function(response){
+                         console.log("invalid inputs\n");
+                     }
+            });
+
+	},
+	queryPackage: queryPackages = function(){
+	    //end function if user tried to press previous page while page was 0
+	    if(myViewModel.index < 0){
+		myViewModel.index = 0;
+		return;
+	    }
+	    $.ajax({ type: "POST",
+		     url:  '/query_package' ,
+		     data:{
+		           "index": myViewModel.index * 10}, 
 		     dataType: 'json',
 		     success: function good(response){
 			 myViewModel.Info = [];
-		         for(var key in response){
-				myViewModel.Info.push(key);
-				console.log(myViewModel.Info);
+		         for(var key in response.params){
+				myViewModel.Info.push({a:response.params[key].a,
+						       b:response.params[key].b,
+						       c:response.params[key].c,
+						       d:false});
+				//console.log(response.params[key]);
 			 }
 		     },
 		     error: function(response){
-			 console.log("ded\n");
+			 console.log("invalid inputs\n");
 		     }
 	    });
 	}
@@ -61,3 +95,4 @@ var myViewModel = new Vue({
     }
     
 });
+myViewModel.queryPackage();

@@ -40,7 +40,11 @@ urlpatterns = [
 
     #write new python urls here
     #url(r'collection/^$',views.new_package, name='new_package')
-    url(r'^new_package', views.new_package, name='new_package'),
+    url(r'^query_package', views.query_package, name='new_package'),
+    url(r'^package_delivered', views.package_delivered, name='package_delivered'),
+    url(r'^update_package', views.update_package, name='update_package'),
+    url(r'^add_package', views.add_package, name='add_package'),
+
 ]
 
 if settings.DEBUG:
