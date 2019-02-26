@@ -197,17 +197,21 @@
           }
         }
       
-  button {
+
+   /*------------------------CSS FOR THE BUTTONS--------------------------------------*/   
+button {
+  
     position: absolute;
     /*top: 35%;
     left: 30%;*/
     transform: translate(-50%, -50%);
-  }
-
-button {
-    background: none;
-    color:#ccc;
-    width: 80px;
+    
+    vertical-align: top;
+    background-position-x: 50%;
+    background-position-y: 150%;
+    
+    color:rgb(0, 0, 0);
+    width: 120px;
     height: 80px;
     border: 2px solid #fff;
     font-size: 18px;
@@ -301,9 +305,19 @@ button:hover:before {
 </head>
 <body>
     <div class="wrapper">
+<<<<<<< HEAD
       <div class="btn">
         <button type ="button" style="top: 45%; left: 30%;">Packages</button>
         <button type ="button" style="top: 65%; left: 30%; ">Mail Stops</button>
+=======
+      <div class="btn" >
+       <!--
+        <button type ="button" valign="top" style="top: 45%; left: 30%;background-image: url(../static/img/button_packages.JPG);background-repeat: no-repeat;">Packages</button>
+        <button type ="button" style="top: 65%; left: 30%;background-image: url(../static/img/button_mailstops.png);background-repeat: no-repeat;">Mail Stops</button> 
+       -->
+        <button type ="button" valign="top" style="top: 45%; left: 30%;">Packages</button>
+        <button type ="button" style="top: 65%; left: 30%;">Mail Stops</button> 
+>>>>>>> cc8c912af3cba6866474f7ad0e4ddf1e7fd61b7c
         <button type ="button" style="top: 45%; left:70%">People</button>
         <button type ="button" style="top: 65%; left:70%">Help Center</button>
       </div>

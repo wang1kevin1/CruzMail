@@ -3,7 +3,7 @@ var myModel = {
     test: 'asd',
     loading: 24,
     Info: [ {a:1111111, b:"Michael", c:"Mora"},
- 	    {a:2222222, b:"Chris"  , c:"UCSC"},
+ 	        {a:2222222, b:"Chris"  , c:"UCSC"},
             {a:3333333, b:"Samir"  , c:"SC"},
             {a:4444444, b:"Kevin"  , c:"SC"},
     	    {a:5555555, b:"Sean"   , c:"SC"}],

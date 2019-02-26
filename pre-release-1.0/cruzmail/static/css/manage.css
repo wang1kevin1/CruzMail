@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 //dividers for manager top bar
+=======
+/*dividers for manager top bar*/
+>>>>>>> cc8c912af3cba6866474f7ad0e4ddf1e7fd61b7c
 .row:after {
     content: "";
     display: table;
@@ -41,6 +45,26 @@
 .col_title{
     float:left;
     width:32.5%;
-    border-right:1px solid black;
-    border-bottom:1px solid black;
+    text-align: center;
+    border-right:3px solid rgb(255, 96, 96);
+    border-bottom:3px solid rgb(255, 96, 96);
+}
+.col_xtitle{
+    float:left;
+    width:35%;
+    text-align: center;
+    border-right:3px solid rgb(255, 96, 96);
+    border-bottom:3px solid rgb(255, 96, 96);
+}
+.col_results{
+    float:left;
+    width:32.5%;
+    border-right:3px solid rgb(255, 96, 96);
+    border-bottom:3px solid rgb(255, 96, 96);
+}
+.col_xresults{
+    float:left;
+    width:35%;
+    border-right:3px solid rgb(255, 96, 96);
+    border-bottom:3px solid rgb(255, 96, 96);
 }
