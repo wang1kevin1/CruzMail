@@ -20,20 +20,22 @@ from django.contrib import admin
 from . import views
 
 #new.....
-from .views import HomePageViews, ManagePageViews
+from .views import HomePageViews, ManagePageViews, MenuPageViews
 from django.urls import path, include
 from django.views.generic import TemplateView
 
 
 urlpatterns = [
-    #url(r'^$', views.index, name="index"),
+    url(r'^$', views.index, name="index"),
     url(r'^admin/', admin.site.urls),
    
 
     path('manage/', ManagePageViews.as_view(), name='manage'),
     path('',        HomePageViews.as_view(),   name='home'),
+    path('menu/', MenuPageViews.as_view(), name='menu'),
+    #path('collection/', CollectionPageViews>as_view(), name='users'),
 
-   # url(r'^collection/', include('cruzmail.collection.urls')),
+    url(r'^collection/', include('cruzmail.collection.urls')),
     url(r'^account/', include('cruzmail.account.urls')),
    # url(r'^inbox/', include('cruzmail.inbox.urls'))
 ]

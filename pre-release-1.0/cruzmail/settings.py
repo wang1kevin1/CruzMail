@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cruzmail',
     'rest_framework',
-    #'cruzmail.collection',
+    'cruzmail.collection',
     'cruzmail.account',
     #'cruzmail.inbox',
 ]
@@ -59,7 +59,7 @@ ROOT_URLCONF = 'cruzmail.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,14 +74,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cruzmail.wsgi.application'
 
+LOGIN_REDIRECT_URL = '/manage'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cruzmail_db',
+        'USER': 'root',
+        'PASSWORD' : 'L!mitless1',
+        'HOST' : '127.0.0.1',
+        'PORT' : '3306',
     }
 }
 

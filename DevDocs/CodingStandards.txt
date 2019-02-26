@@ -23,3 +23,5 @@ HTML:
 CSS:
 - CSS standard coding style
 
+MySQL:
+- Storage Engine: InnoDB

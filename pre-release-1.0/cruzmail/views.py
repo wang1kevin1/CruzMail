@@ -10,3 +10,9 @@ class HomePageViews(TemplateView):
 
 class ManagePageViews(TemplateView):
     template_name = 'manage.html'
+
+class MenuPageViews(TemplateView):
+    template_name = 'menu.html'
+
+class CollectionPageViews(TemplateView):
+    template_name = 'users.html'
