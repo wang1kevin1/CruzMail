@@ -25,12 +25,9 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
 	instance.profile.save()
 
-<<<<<<< HEAD
 def users_list(self):
 	users = User.objects.all()
 
-=======
->>>>>>> cc8c912af3cba6866474f7ad0e4ddf1e7fd61b7c
 def publish(self):
 	self.save()
 
