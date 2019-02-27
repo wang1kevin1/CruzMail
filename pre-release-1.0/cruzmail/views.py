@@ -6,6 +6,21 @@ from .collection.models import mailstops_master, packages_master
 
 # Create your views here.
 @csrf_exempt
+def get_package_via_tracking(request):
+  tracking_number = request.POST.get('id')
+  package = packages_master.objects.get(pkg_tracking=tracking_number)
+
+  info = dict(name = package.name,
+              mailstop = package.mailstop,
+              status = package.pkg_status,
+              remarks = package.pkg_remarks,
+              if(status == 'd'):
+                delivered_date = package.pkg_date_del
+              else:
+                received_date = package.pkg_date_rec)
+  params.append(info)
+  return JsonResponse(dict(params = params))
+
 def query_package(request):
     print ("hello world")
     #test = mailstops_master.objects.create(mailstop=request.POST.get('new_m'),
