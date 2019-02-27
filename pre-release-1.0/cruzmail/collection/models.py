@@ -5,7 +5,7 @@ from django.http import HttpResponse
 # Create your models here.
 
 class mailstops_master(models.Model):
-    mailstop  = models.CharField(max_length = 20, primary_key = True)
+    mailstop  = models.CharField(max_length = 50, primary_key = True)
 
     ms_status_choice = (
         ('0', 'active'),
@@ -22,17 +22,17 @@ class mailstops_master(models.Model):
 
 
 class people_master(models.Model):
-    name     = models.CharField(max_length = 20, primary_key = True)
-    email    = models.CharField(max_length = 20)
+    name     = models.CharField(max_length = 50, primary_key = True)
+    email    = models.CharField(max_length = 50)
     #mailstop = models.ForeignKey(mailstops_master, on_delete=models.DO_NOTHING)
 
 
 
 
 class packages_master(models.Model):
-    pkg_tracking = models.CharField(max_length = 20, primary_key = True)
-    name         = models.CharField(max_length = 20)#models.ForeignKey(people_master, on_delete=models.DO_NOTHING)
-    mailstop     = models.CharField(max_length = 20)#models.CharField(max_length = 20, primary_key = True)
+    pkg_tracking = models.CharField(max_length = 50, primary_key = True)
+    name         = models.CharField(max_length = 50)#models.ForeignKey(people_master, on_delete=models.DO_NOTHING)
+    mailstop     = models.CharField(max_length = 50)#models.CharField(max_length = 20, primary_key = True)
 
 
     pkg_status_choice = (

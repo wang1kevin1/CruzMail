@@ -31,9 +31,9 @@ CREATE TABLE mailstops_master (
 );
 
 CREATE TABLE people_master (
-  name VARCHAR(20) NOT NULL,
-  email VARCHAR(20) NOT NULL,
-  mailstop VARCHAR(20) NOT NULL,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  mailstop VARCHAR(50) NOT NULL,
   FOREIGN KEY (mailstop) REFERENCES mailstops_master(mailstop) ON UPDATE CASCADE,
   PRIMARY KEY (name, mailstop)
 );

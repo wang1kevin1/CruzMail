@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='mailstops_master',
             fields=[
-                ('mailstop', models.CharField(max_length=20, primary_key=True, serialize=False)),
+                ('mailstop', models.CharField(max_length=50, primary_key=True, serialize=False)),
                 ('ms_status', models.CharField(choices=[('0', 'active'), ('1', 'inactive')], default='0', max_length=1)),
                 ('ms_route', models.CharField(choices=[('w', 'West'), ('c', 'central'), ('e', 'east')], max_length=1)),
             ],
@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='packages_master',
             fields=[
-                ('pkg_tracking', models.CharField(max_length=20, primary_key=True, serialize=False)),
+                ('pkg_tracking', models.CharField(max_length=50, primary_key=True, serialize=False)),
                 ('pkg_status', models.CharField(choices=[('r', 'recieved'), ('d', 'delivered')], max_length=1)),
                 ('pkg_sign', models.CharField(choices=[('y', 'yes'), ('n', 'no')], default='n', max_length=1)),
                 ('pkg_email', models.CharField(choices=[('y', 'yes'), ('n', 'no')], default='y', max_length=1)),
@@ -37,8 +37,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='people_master',
             fields=[
-                ('name', models.CharField(max_length=20, primary_key=True, serialize=False)),
-                ('email', models.CharField(max_length=20)),
+                ('name', models.CharField(max_length=50, primary_key=True, serialize=False)),
+                ('email', models.CharField(max_length=50)),
                 ('mailstop', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, primary_key=True, to='collection.mailstops_master')),
             ],
         ),
