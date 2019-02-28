@@ -7,41 +7,56 @@ from .collection.models import mailstops_master, packages_master
 # Create your views here.
 @csrf_exempt
 def query_package(request):
-    print ("hello world")
+
+    #print ("hello world")
     #test = mailstops_master.objects.create(mailstop=request.POST.get('new_m'),
     #                                      ms_route=request.POST.get('new_r'))
     params = []    
     index = int(request.POST.get('index'))
-    for r in mailstops_master.objects.all()[index:index+10]:
-        t = dict(a = r.mailstop,
-                 b = r.ms_status,
-                 c = r.ms_route
+    for r in packages_master.objects.all():
+        t = dict(a = r.pkg_tracking,
+                 b = r.pkg_status,
+                 c = r.pkg_date_rec,
+                 name = r.name,
+                 mailstop = r.mailstop,
+                 sign = r.pkg_sign,
+                 weight = r.pkg_weight,
+                 email = r.pkg_email
                  )
         params.append(t)
     return JsonResponse(dict(params= params))
 
+@csrf_exempt
 def package_delivered(request):
-    for package in request.POST.get('list'):
-        packages_master.objects.get(pkg_tracking=package.id).update(pkg_status='d')
-        print('updaing\n')
-    return response
 
+    t = packages_master.objects.get(pkg_tracking=request.POST.get('pkg_tracking'))
+    t.pkg_status='r'
+    t.save()
+    return JsonResponse(dict(test="ok"))
+
+@csrf_exempt
 def update_package(request):
-    packages_master.objects.get(pkg_tracking=request.POST.get('id')).update(pkg_remarks='test')
-    return null
+
+    t = packages_master.objects.get(pkg_tracking=request.POST.get('track'))
+    t.name =       request.POST.get('name')
+    t.pkg_email =  request.POST.get('email')
+    t.pkg_weight = request.POST.get('weight')
+    t.pkg_sign =   request.POST.get('sign')
+    t.save()
+    return JsonResponse(dict(test="ok"))
 
 
 @csrf_exempt
 def add_package(request):
     packages_master.objects.create(pkg_tracking = request.POST.get('track'),
-                                  #pkg_name = request.POST.get('name'),
-                                  #pkg_mailstop = request.POST.get('mailstop'),
+                                  name = request.POST.get('name'),
+                                  mailstop = request.POST.get('mailstop'),
                                   pkg_status = 'd',
                                   pkg_sign = request.POST.get('sign'),
                                   pkg_email = request.POST.get('email'),
                                   #pkg_date_rec = 0,
                                   pkg_remarks = request.POST.get('remark'))
-    return request
+    return JsonResponse(dict(test="ok"))
 
 def index(request):
     return render(request, 'index.html')
