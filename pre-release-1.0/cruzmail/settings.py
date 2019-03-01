@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'cruzmail.collection',
     'cruzmail.account',
-    'cruzmail.collection'
     #'cruzmail.inbox',
 ]
 
