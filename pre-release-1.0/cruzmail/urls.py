@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.views.static import serve
 from django.conf import settings
 from django.contrib import admin
-from . import views
+from .import views
 
 #new.....
 from .views import HomePageViews, ManagePageViews, MenuPageViews
@@ -38,7 +38,15 @@ urlpatterns = [
 
     url(r'^collection/', include('cruzmail.collection.urls')),
     url(r'^account/', include('cruzmail.account.urls')),
-   # url(r'^inbox/', include('cruzmail.inbox.urls'))
+    # url(r'^inbox/', include('cruzmail.inbox.urls'))
+
+    #write new python urls here
+    #url(r'collection/^$',views.new_package, name='new_package')
+    url(r'^query_package', views.query_package, name='new_package'),
+    url(r'^package_delivered', views.package_delivered, name='package_delivered'),
+    url(r'^update_package', views.update_package, name='update_package'),
+    url(r'^add_package', views.add_package, name='add_package'),
+
 ]
 
 if settings.DEBUG:
