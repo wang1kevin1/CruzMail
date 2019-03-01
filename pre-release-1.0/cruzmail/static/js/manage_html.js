@@ -88,7 +88,7 @@ var myViewModel = new Vue({
     user_names: user = function(){
         $.ajax({
             type:"POST",
-            url:'/collection/get_users',
+            url:'/get_users',
             success: function no(response){
                 myViewModel.users = response.user_list;
                 //console.log(user_list);

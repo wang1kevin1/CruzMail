@@ -10,13 +10,6 @@ from django.contrib.auth.tokens import *
 import datetime
 from django.http import HttpResponse
 
-# Create your models here.
-class User_Profile(models.Model):
-    #user = models.OneToOneField(User, on_delete=models.CASCADE)
-    users = User.objects.all()
-    #print("hello")
-    #bio = models.CharField(max_length=2000, default="")
-    #private_account = models.BooleanField(default=True)
 
 class mailstops_master(models.Model):
     mailstop  = models.CharField(max_length = 20, primary_key = True)
