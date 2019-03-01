@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'cruzmail.collection',
     'cruzmail.account',
-    'cruzmail.collection'
     #'cruzmail.inbox',
 ]
 
@@ -85,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cruzmail_db',
         'USER': 'root',
-        'PASSWORD' : 'L!mitless1',
+        'PASSWORD' : 'hihihihi1',
         'HOST' : '127.0.0.1',
         'PORT' : '3306',
     }

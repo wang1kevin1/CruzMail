@@ -3,6 +3,7 @@
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
 Examples:
+
 Function views
     1. Add an import:  from my_app import views
     2. Add a URL to urlpatterns:  path('', views.home, name='home')
@@ -20,7 +21,7 @@ from django.contrib import admin
 from .import views
 
 #new.....
-from .views import HomePageViews, ManagePageViews, MenuPageViews
+from .views import HomePageViews, ManagePageViews, MenuPageViews, CollectionPageViews
 from django.urls import path, include
 from django.views.generic import TemplateView
 
@@ -32,11 +33,11 @@ urlpatterns = [
    
 
     path('manage/', ManagePageViews.as_view(), name='manage'),
+    path('collection/', CollectionPageViews.as_view(), name='collection'),
     path('',        HomePageViews.as_view(),   name='home'),
     path('menu/', MenuPageViews.as_view(), name='menu'),
     #path('collection/', CollectionPageViews>as_view(), name='users'),
 
-    url(r'^collection/', include('cruzmail.collection.urls')),
     url(r'^account/', include('cruzmail.account.urls')),
     # url(r'^inbox/', include('cruzmail.inbox.urls'))
 
@@ -46,6 +47,9 @@ urlpatterns = [
     url(r'^package_delivered', views.package_delivered, name='package_delivered'),
     url(r'^update_package', views.update_package, name='update_package'),
     url(r'^add_package', views.add_package, name='add_package'),
+
+    url(r'^get_users', views.get_users, name='get_users'),
+
 
 ]
 
