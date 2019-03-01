@@ -17,13 +17,13 @@ def query_package(request):
     for r in packages_master.objects.all():
         if search is None or (len(search) <= len(r.pkg_tracking) and search == r.pkg_tracking[0:len(search)]):
             t = dict(a = r.pkg_tracking,
-                   b = r.pkg_status,
-                   c = r.pkg_date_rec,
-                   name = r.name,
-                   mailstop = r.mailstop,
-                   sign = r.pkg_sign,
-                   weight = r.pkg_weight,
-                   email = r.pkg_email
+                     b = r.pkg_status,
+                     c = r.pkg_date_rec,
+                     name = r.name,
+                     mailstop = r.mailstop,
+                     sign = r.pkg_sign,
+                     weight = r.pkg_weight,
+                     email = r.pkg_email
                     )
             params.append(t)
     return JsonResponse(dict(params= params))
