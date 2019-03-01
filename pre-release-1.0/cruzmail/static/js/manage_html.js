@@ -1,6 +1,6 @@
 var myModel = {
     name: "Ashley",
-    test: 'asdsa', 
+    test: '', 
     new_mailstop: '',
     new_route: '',
     index: 0,
@@ -13,6 +13,7 @@ var myModel = {
     new_remark: '',
     Info: [],
     currentView: -1,
+    newPackageView: false,
     
 };
 
@@ -86,17 +87,12 @@ var myViewModel = new Vue({
 	    
 	    myViewModel.allTrue = false;
 	    myViewModel.currentView = -1;
-	    //end function if user tried to press previous page while page was 0
-	    if(myViewModel.index < 0){
-		myViewModel.index = 0;
-		return;
-	    
-	    }
+	    console.log(myViewModel.test);
 
 	    $.ajax({ type: "POST",
 		     url:  '/query_package' ,
-		     data:{
-		           "index": myViewModel.index * 10}, 
+		     data:{"search": myViewModel.test,
+		           "index":  myViewModel.index * 10}, 
 		     dataType: 'json',
 		     success: function good(response){
 

@@ -12,18 +12,20 @@ def query_package(request):
     #test = mailstops_master.objects.create(mailstop=request.POST.get('new_m'),
     #                                      ms_route=request.POST.get('new_r'))
     params = []    
+    search = request.POST.get('search')
     index = int(request.POST.get('index'))
     for r in packages_master.objects.all():
-        t = dict(a = r.pkg_tracking,
-                 b = r.pkg_status,
-                 c = r.pkg_date_rec,
-                 name = r.name,
-                 mailstop = r.mailstop,
-                 sign = r.pkg_sign,
-                 weight = r.pkg_weight,
-                 email = r.pkg_email
-                 )
-        params.append(t)
+        if search is None or (len(search) < len(r.pkg_tracking) and search == r.pkg_tracking[0:len(search)]):
+            t = dict(a = r.pkg_tracking,
+                   b = r.pkg_status,
+                   c = r.pkg_date_rec,
+                   name = r.name,
+                   mailstop = r.mailstop,
+                   sign = r.pkg_sign,
+                   weight = r.pkg_weight,
+                   email = r.pkg_email
+                    )
+            params.append(t)
     return JsonResponse(dict(params= params))
 
 @csrf_exempt
