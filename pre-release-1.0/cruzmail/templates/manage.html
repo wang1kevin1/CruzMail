@@ -256,7 +256,8 @@
 
 	    <!-- adding new package overlay -->
 	    <div id="overlay" v-if="newPackageView==true">
-	    	<button class = "exit_button" v-on:click="newPackageView=false;">exit</button>
+	    	<div style="font-size:30px" class = "exit_button" v-on:click="newPackageView=false;">&#129409;
+	    	</div>
 	    	<div class="new_package" style="overflow:scroll; overflow-x:hidden;">
 	    		New Package
 
@@ -321,7 +322,7 @@
 	        </div>
 			<div style="border-bottom:10px;"></div>
 
-			<div style="overflow:scroll; height: 93%; overflow-x:hidden; overflow-y:overlay;">
+			<div style="overflow:scroll; height: 54%; overflow-x:hidden; overflow-y:overlay;">
 	    	    <div v-for="info in Info"  class="row" style="width:100%">
 
 	            	<div  v-if="info.index != currentView">
