@@ -260,10 +260,9 @@
     
         <div style="border-bottom:10px"></div>
 
-        {% for user in profile.users %}
-            <p> {{user}} </p>
-        {% endfor %}
-
+        <div v-for="user_titles in users">
+            ${user_titles.username}
+        </div>
     </div>
 
 

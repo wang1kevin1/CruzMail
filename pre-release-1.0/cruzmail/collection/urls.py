@@ -5,6 +5,6 @@ from .views import *
 
 urlpatterns = [
 	url(r'^$', views.collection, name='User_Profile'),
-	#url(r'^users', views.users, name='users'),
+	url(r'^get_users', views.get_users, name='get_users'),
 
 ]
