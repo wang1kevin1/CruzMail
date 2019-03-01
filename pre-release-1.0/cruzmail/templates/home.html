@@ -1,5 +1,5 @@
 {% load staticfiles %}
-<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -10,6 +10,7 @@
     <title>CRUZMAIL</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/collection.css' %}">
     <!-- Custom fonts for this template -->
     <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -18,19 +19,19 @@
     <link href="{% static 'css/clean-blog.css' %}" rel="stylesheet">
 </head>
 
+
+
 <body>
     <!-- Navigation -->
+
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fa fa-bars"></i>
+                <span class="navbar-toggler-icon">
+            </span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/collection">Admin</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/account/login">Login</a>
                     </li>
@@ -41,6 +42,7 @@
             </div>
         </div>
     </nav>
+
     <!-- Page Header -->
     <header class="masthead" style="background-image: url('{% static 'img/sammy_slug.jpg' %}')">
         <div class="container">
@@ -64,7 +66,7 @@
                   A better way to track your packages
 
 		  <!--buttons to link to new pages -->
-
+		  
 		  <form> 
 
 			  <input type="button" value="Michael"

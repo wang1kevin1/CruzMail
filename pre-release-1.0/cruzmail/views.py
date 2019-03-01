@@ -5,6 +5,9 @@ from django.views.generic import TemplateView
 def index(request):
     return render(request, 'index.html')
 
+def home(request):
+    return render(request, 'home.html')
+
 class HomePageViews(TemplateView):
    template_name = 'index.html'
 
@@ -16,3 +19,4 @@ class MenuPageViews(TemplateView):
 
 class CollectionPageViews(TemplateView):
     template_name = 'users.html'
+
