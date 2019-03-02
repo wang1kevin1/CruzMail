@@ -21,7 +21,13 @@ from django.contrib import admin
 from .import views
 
 #new.....
-from .views import HomePageViews, ManagePageViews, MenuPageViews, CollectionPageViews
+from .views import (
+    CollectionPageViews,
+    HomePageViews, 
+    ManagePageViews, 
+    MailstopPageViews,
+    MenuPageViews,
+)
 from django.urls import path, include
 from django.views.generic import TemplateView
 
@@ -36,20 +42,29 @@ urlpatterns = [
     path('collection/', CollectionPageViews.as_view(), name='collection'),
     path('',        HomePageViews.as_view(),   name='home'),
     path('menu/', MenuPageViews.as_view(), name='menu'),
+    path('mailstop/', MailstopPageViews.as_view(), name='mailstop'),
     #path('collection/', CollectionPageViews>as_view(), name='users'),
 
     url(r'^account/', include('cruzmail.account.urls')),
     # url(r'^inbox/', include('cruzmail.inbox.urls'))
 
-    #write new python urls here
+    # Manage (Package Management)
     #url(r'collection/^$',views.new_package, name='new_package')
     url(r'^query_package', views.query_package, name='new_package'),
     url(r'^package_delivered', views.package_delivered, name='package_delivered'),
     url(r'^update_package', views.update_package, name='update_package'),
     url(r'^add_package', views.add_package, name='add_package'),
 
+    # Mailstops (Mailstop Management)
+    #url(r'collection/^$',views.new_mailstop, name='new_mailstop')
+    url(r'^query_mailstop', views.query_mailstop, name='new_mailstop'),
+    url(r'^activate_mailstop', views.activate_mailstop, name='activate_mailstop'),
+    url(r'^deactivate_mailstop', views.deactivate_mailstop, name='deactivate_mailstop'),
+    url(r'^update_mailstop', views.update_mailstop, name='update_mailstop'),
+    url(r'^add_mailstop', views.add_mailstop, name='add_mailstop'),
+    
+    # Admin (Employee Management)
     url(r'^get_users', views.get_users, name='get_users'),
-
 
 ]
 

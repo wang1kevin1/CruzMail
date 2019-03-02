@@ -1,15 +1,17 @@
-DROP DATABASE IF EXISTS cruzmail;
-CREATE DATABASE IF NOT EXISTS cruzmail CHARACTER SET utf8;
-USE cruzmail;
+DROP DATABASE IF EXISTS cruzmail_db;
+CREATE DATABASE IF NOT EXISTS cruzmail_db CHARACTER SET utf8;
+USE cruzmail_db;
 
 DROP TABLE IF EXISTS mailstops_master,
                      people_master,
                      packages_master;
 
 CREATE TABLE mailstops_master (
-  mailstop VARCHAR(20) NOT NULL,
-  ms_status ENUM('active','inactive') NOT NULL DEFAULT 'active',
-  ms_route ENUM('West','Central','East') NOT NULL,
+  mailstop VARCHAR(15) NOT NULL,
+  ms_name VARCHAR(30) NOT NULL,
+  ms_route ENUM('W','C','E') NOT NULL,
+  ms_route_order VARCHAR(3) NOT NULL,
+  ms_status ENUM('Active','Inactive') NOT NULL,
   PRIMARY KEY (mailstop)
 );
 

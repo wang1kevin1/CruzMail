@@ -10,31 +10,28 @@ from django.contrib.auth.tokens import *
 import datetime
 from django.http import HttpResponse
 
-
 class mailstops_master(models.Model):
-    mailstop  = models.CharField(max_length = 20, primary_key = True)
+    mailstop  = models.CharField(max_length = 15, primary_key = True)
 
-    ms_status_choice = (
-        ('0', 'active'),
-        ('1', 'inactive'),)
-    ms_status = models.CharField(max_length = 1, choices = ms_status_choice, default = '0')
-    
+    ms_name = models.CharField(max_length = 30)
+
     ms_route_choice = (
-        ('w', 'West'),
-        ('c', 'central'),
-        ('e', 'east'))
+        ('W', 'W'),
+        ('C', 'C'),
+        ('E', 'E'))
     ms_route  = models.CharField(max_length = 1, choices = ms_route_choice)
     
-    
+    ms_route_order = models.CharField(max_length = 3)
 
+    ms_status_choice = (
+        ('Active', 'Active'),
+        ('Inactive', 'Inactive'),)
+    ms_status = models.CharField(max_length = 8, choices = ms_status_choice, default = '0')
 
 class people_master(models.Model):
     name     = models.CharField(max_length = 20, primary_key = True)
     email    = models.CharField(max_length = 20)
-    #mailstop = models.ForeignKey(mailstops_master, on_delete=models.DO_NOTHING)
-
-
-
+    mailstop = models.CharField(max_length = 20)#mailstop = models.ForeignKey(mailstops_master, on_delete=models.DO_NOTHING)
 
 class packages_master(models.Model):
     pkg_tracking = models.CharField(max_length = 20, primary_key = True)
