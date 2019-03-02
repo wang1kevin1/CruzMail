@@ -40,9 +40,9 @@ class packages_master(models.Model):
 
 
     pkg_status_choice = (
-        ('r', 'recieved'),
-        ('d', 'delivered'))
-    pkg_status   = models.CharField(max_length = 1, choices = pkg_status_choice)
+        ('recieved', 'recieved'),
+        ('delivered', 'delivered'))
+    pkg_status   = models.CharField(max_length = 9, choices = pkg_status_choice)
 
     pkg_sign_choice = (
         ('y', 'yes'),
