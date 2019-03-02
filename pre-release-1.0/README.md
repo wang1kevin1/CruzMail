@@ -2,13 +2,29 @@
 
 ## Setting Up the WebApp: cruzmail/~
 
-### Installing Django
+### Resetting Database Migrations
 
-stuff
+Remove any previous migrations:
+```
+find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+find . -path "*/migrations/*.pyc" -delete
+```
+
+Drop the database:
+```
+$ sudo mysql -u root -p < cruzmail_db.sql
+```
+
+Create new migrations:
+```
+python manage.py makemigrations
+python manage.py migrate
+```
 
 ### Testing the WebApp
-
-stuff
+```
+python3 manage.py runserver <server-ip>:<port>
+```
 
 
 
@@ -46,12 +62,5 @@ $ sudo mysql -u root -p
 
 Download cruzmail_db.sql. Change directory to its location and run:
 ```
-$ sudo mysql < cruzmail_db.sql
-```
-
-### Testing the Installation
-
-After installing the database, you can display output in table format as such:
-```
-$ sudo mysql -t < cruzmail_db.sql
+$ sudo mysql -u root -p < cruzmail_db.sql
 ```
