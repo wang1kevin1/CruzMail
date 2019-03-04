@@ -4,7 +4,7 @@ from django.http import *
 from django.contrib.auth.models import User
 from django.views.generic import TemplateView
 from django.views.decorators.csrf import csrf_exempt
-from .collection.models import mailstops_master, packages_master
+from .collection.models import mailstops_master, packages_master, people_master
 
 # PACKAGE VIEWS
 @csrf_exempt
