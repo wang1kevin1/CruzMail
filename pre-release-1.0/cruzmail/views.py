@@ -109,6 +109,48 @@ def add_mailstop(request):
                                    )
     return JsonResponse(dict(test="ok"))
 
+# PEOPLE (CUSTOMER) VIEWS
+@csrf_exempt
+def query_person(request):
+    params = []
+    search = request.POST.get('search')
+    index = int(request.POST.get('index'))
+    for r in people_master.objects.all():
+      if search is None or (len(search) <= len(r.name) and search == r.name[0:len(search)]):
+        t = dict(name       = r.name,
+                 ppl_email  = r.ppl_email,
+                 ppl_status = r.ppl_status,
+                 mailstop   = r.mailstop
+                )
+        params.append(t)
+    return JsonResponse(dict(params= params))
+
+@csrf_exempt
+def away_person(request):
+    t = people_master.objects.get(name=request.POST.get('name'))
+    t.ppl_status='Away'
+    t.save()
+    return JsonResponse(dict(test="ok"))
+
+@csrf_exempt
+def update_person(request):
+    t = people_master.objects.get(name=request.POST.get('ppl_name'))
+    t.ppl_email   = request.POST.get('ppl_email')
+    t.ppl_status  = request.POST.get('ppl_status')
+    t.mailstop    = request.POST.get('mailstop')
+    t.save()
+    return JsonResponse(dict(test="ok"))
+
+@csrf_exempt
+def add_person(request):
+    people_master.objects.create(name        = request.POST.get('ppl_name'),
+                                 ppl_email   = request.POST.get('ppl_email'),
+                                 ppl_status  = 'Available',
+                                 mailstop    = request.POST.get('mailstop'),
+                                )
+    return JsonResponse(dict(test="ok"))
+
+
 # ADMIN VIEWS
 @csrf_exempt
 def get_users(request):
@@ -143,4 +185,7 @@ class CollectionPageViews(TemplateView):
 
 class MailstopPageViews(TemplateView):
     template_name = 'mailstop.html'
+
+class PersonPageViews(TemplateView):
+    template_name = 'person.html'
 

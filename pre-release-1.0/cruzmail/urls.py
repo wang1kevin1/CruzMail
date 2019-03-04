@@ -27,6 +27,7 @@ from .views import (
     ManagePageViews, 
     MailstopPageViews,
     MenuPageViews,
+    PersonPageViews,
 )
 from django.urls import path, include
 from django.views.generic import TemplateView
@@ -43,6 +44,7 @@ urlpatterns = [
     path('',        HomePageViews.as_view(),   name='home'),
     path('menu/', MenuPageViews.as_view(), name='menu'),
     path('mailstop/', MailstopPageViews.as_view(), name='mailstop'),
+    path('person/', PersonPageViews.as_view(), name='person'),
     #path('collection/', CollectionPageViews>as_view(), name='users'),
 
     url(r'^account/', include('cruzmail.account.urls')),
@@ -62,6 +64,13 @@ urlpatterns = [
     url(r'^deactivate_mailstop', views.deactivate_mailstop, name='deactivate_mailstop'),
     url(r'^update_mailstop', views.update_mailstop, name='update_mailstop'),
     url(r'^add_mailstop', views.add_mailstop, name='add_mailstop'),
+
+    # People (Recipient Management)
+    #url(r'collection/^$',views.new_mailstop, name='new_mailstop')
+    url(r'^query_person', views.query_person, name='new_person'),
+    url(r'^away_person', views.away_person, name='away_person'),
+    url(r'^update_person', views.update_person, name='update_person'),
+    url(r'^add_person', views.add_person, name='add_person'),
     
     # Admin (Employee Management)
     url(r'^get_users', views.get_users, name='get_users'),
