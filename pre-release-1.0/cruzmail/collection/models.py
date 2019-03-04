@@ -29,7 +29,7 @@ class mailstops_master(models.Model):
     ms_status = models.CharField(max_length = 8, choices = ms_status_choice, default = 'Active')
 
 class people_master(models.Model):
-    name        = models.CharField(max_length = 20, primary_key = True)
+    name        = models.CharField(max_length = 20)
     ppl_email   = models.CharField(max_length = 40)
 
     ppl_status_choice = (
@@ -38,6 +38,9 @@ class people_master(models.Model):
     ppl_status = models.CharField(max_length = 9, choices = ppl_status_choice, default = 'Available')
 
     mailstop = models.CharField(max_length = 20)#models.ForeignKey(mailstops_master, on_delete=models.DO_NOTHING)
+
+    class Meta:
+        unique_together = (('name', 'mailstop'),)
 
 class packages_master(models.Model):
     pkg_tracking = models.CharField(max_length = 20, primary_key = True)
