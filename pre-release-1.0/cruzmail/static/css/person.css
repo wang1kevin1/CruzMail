@@ -44,27 +44,27 @@
   width:30%;
   height:19.667px;
   text-align: center;
-  border-right:3px solid lightskyblue;
-  border-bottom:3px solid lightskyblue;
+  border-right:3px solid khaki;
+  border-bottom:3px solid khaki;
 }
 .col_xtitle{ 
   float:left;
   width:35%;
   text-align: center;
-  border-right:3px solid lightskyblue;
-  border-bottom:3px solid lightskyblue;
+  border-right:3px solid khaki;
+  border-bottom:3px solid khaki;
 }
 .col_results{
   float:left;
   width:32%;
-  border-right:3px solid lightskyblue;
-  border-bottom:3px solid lightskyblue;
+  border-right:3px solid khaki;
+  border-bottom:3px solid khaki;
 }
 .col_xresults{
   float:left;
   width:35%;
-  border-right:3px solid lightskyblue;
-  border-bottom:3px solid lightskyblue;
+  border-right:3px solid khaki;
+  border-bottom:3px solid khaki;
 }
 .buttons {
              
