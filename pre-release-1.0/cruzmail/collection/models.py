@@ -39,8 +39,9 @@ class people_master(models.Model):
 
     mailstop = models.CharField(max_length = 20)#models.ForeignKey(mailstops_master, on_delete=models.DO_NOTHING)
 
-    class Meta:
-        unique_together = (('name', 'mailstop'),)
+    # allows for people with the same name to reside in system as long as different mailstops. Messes up request.POST.get
+    #class Meta:
+        #unique_together = (('name', 'mailstop'),)
 
 class packages_master(models.Model):
     pkg_tracking = models.CharField(max_length = 20, primary_key = True)

@@ -45,7 +45,7 @@ var myViewModel = new Vue({
     },
     activateMailstop: activateMailstops = function () {
       for (var key in myViewModel.Info)
-        if (!myViewModel.Info[key].isActive)
+        if (myViewModel.Info[key].isActive)
           $.ajax({
             type: "POST",
             url: '/activate_mailstop',
