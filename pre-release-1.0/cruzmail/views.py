@@ -160,8 +160,10 @@ def get_users(request):
   for key in User.objects.all():
     names = dict(
       username = key.username,
-      emails = key.email
+      emails = key.email,
+      password = key.password,
       )
+
     name_users.append(names)
   return JsonResponse(dict(user_list = name_users))
 
@@ -171,7 +173,6 @@ def get_emails(request):
   
   
   for key in User.objects.all():
-    print (key.email)
     names = dict(
       emails = key.email
 
@@ -180,6 +181,17 @@ def get_emails(request):
     email_names.append(names)
 
   return JsonResponse(dict(user_emails = email_names))
+
+@csrf_exempt
+def delete_users(request):
+
+  users = User.objects.get(username=request.POST.get('key'))
+  print (request.POST.get('key'))
+  print (users)
+  users.delete()
+
+  
+  return JsonResponse(dict(test="ok"))
 
 def index(request):
     return render(request, 'index.html')

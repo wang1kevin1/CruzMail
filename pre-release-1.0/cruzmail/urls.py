@@ -75,7 +75,7 @@ urlpatterns = [
     # Admin (Employee Management)
     url(r'^get_users', views.get_users, name='get_users'),
     url(r'^get_emails', views.get_emails, name='get_emails'),
-
+    url(r'^delete_users', views.delete_users, name='delete_users'),
 ]
 
 if settings.DEBUG:

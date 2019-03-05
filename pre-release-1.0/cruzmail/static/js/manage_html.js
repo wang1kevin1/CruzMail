@@ -15,7 +15,7 @@ var myModel = {
     currentView: -1,
     newPackageView: false,
     users: [],
-    emails: [],
+    delete: [],
     
 };
 
@@ -28,8 +28,9 @@ var myViewModel = new Vue({
 	change_to_true: changes_to_true = function(){
 	  
 	    var allTrue = !myViewModel.allTrue;
-	    for(var key in myViewModel.Info)
-		myViewModel.Info[key].isDelivered = allTrue;
+	    for(var key in myViewModel.Info){
+			myViewModel.Info[key].isDelivered = allTrue;
+	    }
 	},
 	addPackage: addPackages = function(){
 	    $.ajax({ type: "POST",
@@ -101,6 +102,8 @@ var myViewModel = new Vue({
 			     myViewModel.users.push({
 						    name: objHold.username,
 				     		email: objHold.emails,
+				     		password: objHold.password,
+				     		is_deleted: false,
 				     	});
 			  
 				//console.log(response.params[key]);
@@ -114,6 +117,32 @@ var myViewModel = new Vue({
             }
         });
     },
+
+	delete_user: delete_users = function() {
+	  	var self = this;
+
+		var objHold;
+		console.log(myViewModel.users.name);
+	    for(var key in myViewModel.users){
+		if(myViewModel.users[key].is_deleted)
+	 	   $.ajax({ 		    
+	 	   		url: '/delete_users',
+			    type:"POST",
+			    data: {"key": myViewModel.users[key].name },
+			    dataType: 'json',
+                           success: function no(response){
+                           	self.users.splice(key,1);
+
+                           },
+                           error: function(response){
+                               console.log("invalid inputs\n");
+                           }
+                   });
+	 		console.log(myViewModel.users[key]);
+	 		}
+	 	location.reload();
+	},
+
 
     user_email: email_list = function(){
         $.ajax({
