@@ -17,3 +17,16 @@ def get_users(request):
 		name_users.append(names)
 
 	return JsonResponse(dict(user_list = name_users))
+
+@csrf_exempt
+def get_emails(request):
+	name_users = []
+	
+	
+	for key in User.objects.all():
+		names = dict(
+			emails = key.email
+			)
+		name_users.append(names)
+
+	return JsonResponse(dict(user_list = name_users))

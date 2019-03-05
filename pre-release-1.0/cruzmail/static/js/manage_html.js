@@ -15,6 +15,7 @@ var myModel = {
     currentView: -1,
     newPackageView: false,
     users: [],
+    emails: [],
     
 };
 
@@ -85,14 +86,25 @@ var myViewModel = new Vue({
             });
 
 	},
+
     user_names: user = function(){
         $.ajax({
             type:"POST",
             url:'/get_users',
             success: function no(response){
-                myViewModel.users = response.user_list;
+                //myViewModel.users = response.user_list;
                 //console.log(user_list);
-      
+                var objHold;
+		         for(var key in response.user_list){
+			     
+			     objHold = response.user_list[key]
+			     myViewModel.users.push({
+						    name: objHold.username,
+				     		email: objHold.emails,
+				     	});
+			  
+				//console.log(response.params[key]);
+			 }      
 
             },
             error: function(response){
@@ -102,6 +114,26 @@ var myViewModel = new Vue({
             }
         });
     },
+
+    user_email: email_list = function(){
+        $.ajax({
+            type:"POST",
+            url:'/get_emails',
+            success: function no(response){
+                myViewModel.emails = response.user_emails;
+                console.log(response.user_emails);
+      
+
+            },
+            error: function(response){
+
+                console.log("No Users\n");
+               //console.log(response.user_emails);
+            }
+        });
+    },
+
+
 	queryPackage: queryPackages = function(){
 	    
 	    myViewModel.allTrue = false;
@@ -145,5 +177,7 @@ var myViewModel = new Vue({
     }
     
 });
+
+myViewModel.user_email();
 myViewModel.user_names();
 myViewModel.queryPackage();

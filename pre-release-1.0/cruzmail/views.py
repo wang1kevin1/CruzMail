@@ -66,11 +66,27 @@ def get_users(request):
   
   for key in User.objects.all():
     names = dict(
-      username = key.username
+      username = key.username,
+      emails = key.email
       )
     name_users.append(names)
-
   return JsonResponse(dict(user_list = name_users))
+
+@csrf_exempt
+def get_emails(request):
+  email_names = []
+  
+  
+  for key in User.objects.all():
+    print (key.email)
+    names = dict(
+      emails = key.email
+
+      )
+    #print (key.email)
+    email_names.append(names)
+
+  return JsonResponse(dict(user_emails = email_names))
 
 def index(request):
     return render(request, 'index.html')

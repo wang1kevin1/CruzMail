@@ -49,6 +49,7 @@ urlpatterns = [
     url(r'^add_package', views.add_package, name='add_package'),
 
     url(r'^get_users', views.get_users, name='get_users'),
+    url(r'^get_emails', views.get_emails, name='get_emails'),
 
 
 ]
