@@ -12,6 +12,8 @@ from django.contrib.auth.decorators import login_required, permission_required
 @csrf_exempt
 def query_package(request):
 
+    if not request.user.is_authenticated():
+      return
     #if user is not None:
     #  login(request, user)
     params = []    
@@ -33,7 +35,9 @@ def query_package(request):
 
 @csrf_exempt
 def package_delivered(request):
-    logout(request)
+
+    if not request.user.is_authenticated():
+      return
     t = packages_master.objects.get(pkg_tracking=request.POST.get('pkg_tracking'))
     t.pkg_status='received'
     t.save()
@@ -41,6 +45,10 @@ def package_delivered(request):
 
 @csrf_exempt
 def update_package(request):
+
+    if not request.user.is_authenticated():
+      return
+
     t = packages_master.objects.get(pkg_tracking=request.POST.get('track'))
     t.name =       request.POST.get('name')
     t.pkg_email =  request.POST.get('email')
@@ -51,6 +59,10 @@ def update_package(request):
 
 @csrf_exempt
 def add_package(request):
+
+    if not request.user.is_authenticated():
+      return
+
     packages_master.objects.create(pkg_tracking = request.POST.get('track'),
                                   name = request.POST.get('name'),
                                   mailstop = request.POST.get('mailstop'),
@@ -64,6 +76,10 @@ def add_package(request):
 # MAILSTOP VIEWS.
 @csrf_exempt
 def query_mailstop(request):
+
+    if not request.user.is_authenticated():
+      return
+
     params = []
     search = request.POST.get('search')
     index = int(request.POST.get('index'))
@@ -94,6 +110,10 @@ def deactivate_mailstop(request):
 
 @csrf_exempt
 def update_mailstop(request):
+
+    if not request.user.is_authenticated():
+      return
+
     t = mailstops_master.objects.get(mailstop=request.POST.get('ms_id'))
     t.ms_name         = request.POST.get('ms_name')
     t.ms_route_choice = request.POST.get('ms_route')
@@ -104,6 +124,10 @@ def update_mailstop(request):
 
 @csrf_exempt
 def add_mailstop(request):
+
+    if not request.user.is_authenticated():
+      return
+
     mailstops_master.objects.create(mailstop        = request.POST.get('ms_id'),
                                     ms_name         = request.POST.get('ms_name'),
                                     ms_route        = request.POST.get('ms_route'),
@@ -115,6 +139,10 @@ def add_mailstop(request):
 # PEOPLE (CUSTOMER) VIEWS
 @csrf_exempt
 def query_person(request):
+
+    if not request.user.is_authenticated():
+      return
+
     params = []
     search = request.POST.get('search')
     index = int(request.POST.get('index'))
@@ -130,6 +158,10 @@ def query_person(request):
 
 @csrf_exempt
 def away_person(request):
+
+    if not request.user.is_authenticated():
+      return
+
     t = people_master.objects.get(name=request.POST.get('name'))
     t.ppl_status='Away'
     t.save()
@@ -146,6 +178,10 @@ def update_person(request):
 
 @csrf_exempt
 def add_person(request):
+
+    if not request.user.is_authenticated():
+      return
+
     people_master.objects.create(name        = request.POST.get('ppl_name'),
                                  ppl_email   = request.POST.get('ppl_email'),
                                  ppl_status  = 'Available',
@@ -157,6 +193,10 @@ def add_person(request):
 # ADMIN VIEWS
 @csrf_exempt
 def get_users(request):
+
+  if not request.user.is_authenticated():
+    return
+
   name_users = []
   
   
@@ -172,6 +212,10 @@ def get_users(request):
 
 @csrf_exempt
 def get_emails(request):
+
+  if not request.user.is_authenticated():
+    return
+    
   email_names = []
   
   
@@ -187,6 +231,9 @@ def get_emails(request):
 
 @csrf_exempt
 def delete_users(request):
+
+  if not request.user.is_authenticated():
+    return
 
   users = User.objects.get(username=request.POST.get('key'))
   print (request.POST.get('key'))
@@ -215,12 +262,15 @@ def menu(request):
 def collection(request):
   return render(request, 'users.html')
 
-
 @login_required(login_url='/account/login')
 def mailstop(request):
   return render(request, 'mailstop.html')
 
 @login_required(login_url='/account/login')
-def person(TemplateView):
-  return render(requestm, 'person.html')
+def person(request):
+  return render(request, 'person.html')
+
+def logging_out(request):
+  logout(request)
+  return redirect('../')
 

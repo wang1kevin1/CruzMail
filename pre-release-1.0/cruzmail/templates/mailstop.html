@@ -1,3 +1,4 @@
+
 {% load staticfiles %}
 
 <html>
@@ -231,7 +232,7 @@
 			<nav>
 				<ul>
 					<li><a href="#">Home</a></li>
-					<li><a href="#">Logout</a></li>
+					<li><a class="nav-link" href="{% url 'logging_out' %}">Logout</a></li>
 				</ul>
 			</nav>
 			<label for="nav-toggle" class="nav-toggle-label">

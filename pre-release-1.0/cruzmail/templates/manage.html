@@ -231,7 +231,7 @@
 					  <li><a href="#">Report</a></li>
 					  <li><a href="#">Contact</a></li>
 
-					  <li><a class="nav-link" href="{% url 'home' %}">Logout</a></li>
+					  <li><a class="nav-link" href="{% url 'logging_out' %}">Logout</a></li>
 					</ul>
 				  </nav>
 				  <label for="nav-toggle" class="nav-toggle-label">
@@ -254,6 +254,9 @@
 		<button v-on:click="queryPackage();">Search</button>
 	    <button v-on:click="newPackageView = true;">New Package</button>
 
+	    {% if user.is_authenticated %}
+	    	ok
+	    {% endif %}
 	    <!-- adding new package overlay -->
 	    <div id="overlay" v-if="newPackageView==true">
 	    	<div style="font-size:30px" class = "exit_button" v-on:click="newPackageView=false;">&#129409;
