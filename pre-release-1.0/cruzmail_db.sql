@@ -17,7 +17,8 @@ CREATE TABLE mailstops_master (
 
 CREATE TABLE people_master (
   name VARCHAR(20) NOT NULL,
-  email VARCHAR(20) NOT NULL,
+  ppl_email VARCHAR(40) NOT NULL,
+  ppl_status ENUM('Available', 'Away') NOT NULL,
   mailstop VARCHAR(20) NOT NULL,
   FOREIGN KEY (mailstop) REFERENCES mailstops_master(mailstop) ON UPDATE CASCADE,
   PRIMARY KEY (name, mailstop)

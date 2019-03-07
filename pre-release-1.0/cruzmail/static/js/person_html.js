@@ -4,35 +4,34 @@ var myModel = {
   index: 0,
   allTrue: false,
 
+  new_person: '',
+  new_ppl_email: '',
+  new_ppl_status: '',
   new_mailstop: '',
-  new_ms_name: '',
-  new_ms_route: '',
-  new_ms_route_order: '',
   Info: [],
   currentView: -1,
-  newMailstopView: false,
+  newPersonView: false,
 };
 
 var myViewModel = new Vue({
-  el: '#mailstop_view',
+  el: '#person_view',
   delimiters: ['${', '}'],
   data: myModel,
   methods: {
     change_to_true: changes_to_true = function () {
       var allTrue = !myViewModel.allTrue;
       for (var key in myViewModel.Info)
-        myViewModel.Info[key].isActive = allTrue;
+        myViewModel.Info[key].isAvailable = allTrue;
     },
-    addMailstop: addMailstops = function () {
+    addPerson: addPeople = function () {
       $.ajax({
         type: "POST",
-        url: '/add_mailstop',
+        url: '/add_person',
         data: {
-          "ms_id": myViewModel.new_mailstop,
-          "ms_name": myViewModel.new_ms_name,
-          "ms_route": myViewModel.new_ms_route,
-          "ms_route_order": myViewModel.new_ms_route_order,
-          "ms_status": myViewModel.new_ms_status
+          "ppl_name": myViewModel.new_person,
+          "ppl_email": myViewModel.new_ppl_email,
+          "ppl_status": myViewModel.new_ppl_status,
+          "mailstop": myViewModel.new_mailstop
         },
         dataType: 'json',
         success: function no(response) {
@@ -43,14 +42,15 @@ var myViewModel = new Vue({
       });
 
     },
-    activateMailstop: activateMailstops = function () {
+
+    awayPerson: awayPeople = function () {
       for (var key in myViewModel.Info)
-        if (myViewModel.Info[key].isActive)
+        if (myViewModel.Info[key].isAvailable)
           $.ajax({
             type: "POST",
-            url: '/activate_mailstop',
+            url: '/away_person',
             data: {
-              "mailstop": myViewModel.Info[key].mailstop
+              "name": myViewModel.Info[key].name
             },
             dataType: 'json',
             success: function no(response) {
@@ -61,36 +61,17 @@ var myViewModel = new Vue({
           });
     },
 
-    deactivateMailstop: deactivateMailstops = function () {
-      for (var key in myViewModel.Info)
-        if (myViewModel.Info[key].isActive)
-          $.ajax({
-            type: "POST",
-            url: '/deactivate_mailstop',
-            data: {
-              "mailstop": myViewModel.Info[key].mailstop
-            },
-            dataType: 'json',
-            success: function no(response) {
-            },
-            error: function (response) {
-              console.log("invalid inputs\n");
-            }
-          });
-    },
-
-    updateMailstop: updateMailstops = function () {
+    updatePerson: updatePeople = function () {
       var objHold = myViewModel.Info[myViewModel.currentView];
       console.log(objHold);
       $.ajax({
         type: "POST",
-        url: '/update_mailstop',
+        url: '/update_person',
         data: {
-          "ms_id": objHold.mailstop,
-          "ms_name": objHold.ms_name,
-          "ms_route": objHold.ms_route,
-          "ms_route_order": objHold.ms_route_order,
-          "ms_status": objHold.ms_status
+          "ppl_name": objHold.name,
+          "ppl_email": objHold.ppl_email,
+          "ppl_status": objHold.ppl_status,
+          "mailstop": objHold.mailstop
         },
         dataType: 'json',
         success: function no(response) {
@@ -100,13 +81,13 @@ var myViewModel = new Vue({
         }
       });
     },
-    queryMailstop: queryMailstops = function () {
+    queryPerson: queryPeople = function () {
       myViewModel.allTrue = false;
       myViewModel.currentView = -1;
 
       $.ajax({
         type: "POST",
-        url: '/query_mailstop',
+        url: '/query_person',
         data: {
           "search": myViewModel.test,
           "index": myViewModel.index * 10
@@ -120,12 +101,11 @@ var myViewModel = new Vue({
           for (var key in response.params) {
             objHold = response.params[key]
             myViewModel.Info.push({
+              name: objHold.name,
+              ppl_email: objHold.ppl_email,
+              ppl_status: objHold.ppl_status,
               mailstop: objHold.mailstop,
-              ms_name: objHold.ms_name,
-              ms_route: objHold.ms_route,
-              ms_route_order: objHold.ms_route_order,
-              ms_status: objHold.ms_status,
-              isActive: false,
+              isAvailable: false,
               index: index
             });
             index++;
@@ -141,4 +121,4 @@ var myViewModel = new Vue({
   }
 
 });
-myViewModel.queryMailstop();
+myViewModel.queryPerson();

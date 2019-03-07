@@ -16,6 +16,7 @@ var myModel = {
     currentView: -1,
     newPackageView: false,
     users: [],
+    delete: [],
     
 };
 
@@ -28,8 +29,9 @@ var myViewModel = new Vue({
 	change_to_true: changes_to_true = function(){
 	  
 	    var allTrue = !myViewModel.allTrue;
-	    for(var key in myViewModel.Info)
-		myViewModel.Info[key].isDelivered = allTrue;
+	    for(var key in myViewModel.Info){
+			myViewModel.Info[key].isDelivered = allTrue;
+	    }
 	},
 	addPackage: addPackages = function(){
 	    $.ajax({ type: "POST",
@@ -86,14 +88,27 @@ var myViewModel = new Vue({
             });
 
 	},
+
     user_names: user = function(){
         $.ajax({
             type:"POST",
             url:'/get_users',
             success: function no(response){
-                myViewModel.users = response.user_list;
+                //myViewModel.users = response.user_list;
                 //console.log(user_list);
-      
+                var objHold;
+		         for(var key in response.user_list){
+			     
+			     objHold = response.user_list[key]
+			     myViewModel.users.push({
+						    name: objHold.username,
+				     		email: objHold.emails,
+				     		password: objHold.password,
+				     		is_deleted: false,
+				     	});
+			  
+				//console.log(response.params[key]);
+			 }      
 
             },
             error: function(response){
@@ -103,6 +118,52 @@ var myViewModel = new Vue({
             }
         });
     },
+
+	delete_user: delete_users = function() {
+	  	var self = this;
+
+		var objHold;
+		console.log(myViewModel.users.name);
+	    for(var key in myViewModel.users){
+		if(myViewModel.users[key].is_deleted)
+	 	   $.ajax({ 		    
+	 	   		url: '/delete_users',
+			    type:"POST",
+			    data: {"key": myViewModel.users[key].name },
+			    dataType: 'json',
+                           success: function no(response){
+                           	self.users.splice(key,1);
+
+                           },
+                           error: function(response){
+                               console.log("invalid inputs\n");
+                           }
+                   });
+	 		console.log(myViewModel.users[key]);
+	 		}
+	 	location.reload();
+	},
+
+
+    user_email: email_list = function(){
+        $.ajax({
+            type:"POST",
+            url:'/get_emails',
+            success: function no(response){
+                myViewModel.emails = response.user_emails;
+                console.log(response.user_emails);
+      
+
+            },
+            error: function(response){
+
+                console.log("No Users\n");
+               //console.log(response.user_emails);
+            }
+        });
+    },
+
+
 	queryPackage: queryPackages = function(){
 	    
 	    myViewModel.allTrue = false;
@@ -146,5 +207,7 @@ var myViewModel = new Vue({
     }
     
 });
+
+myViewModel.user_email();
 myViewModel.user_names();
 myViewModel.queryPackage();

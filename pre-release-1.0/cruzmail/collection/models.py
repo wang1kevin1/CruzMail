@@ -21,10 +21,21 @@ class mailstops_master(models.Model):
     ms_status_choice = models.CharField(max_length = 20)
     ms_status = models.CharField(max_length = 8,  default = '0')
 
+
 class people_master(models.Model):
-    name     = models.CharField(max_length = 20, primary_key = True)
-    email    = models.CharField(max_length = 20)
-    mailstop = models.CharField(max_length = 20)#mailstop = models.ForeignKey(mailstops_master, on_delete=models.DO_NOTHING)
+    name        = models.CharField(max_length = 20, primary_key = True)
+    ppl_email   = models.CharField(max_length = 40)
+
+    ppl_status_choice = (
+        ('Available', 'Available'),
+        ('Away', 'Away'),)
+    ppl_status = models.CharField(max_length = 9, choices = ppl_status_choice, default = 'Available')
+
+    mailstop = models.CharField(max_length = 20)#models.ForeignKey(mailstops_master, on_delete=models.DO_NOTHING)
+
+    # allows for people with the same name to reside in system as long as different mailstops. Messes up request.POST.get
+    #class Meta:
+        #unique_together = (('name', 'mailstop'),)
 
 
 class packages_master(models.Model):

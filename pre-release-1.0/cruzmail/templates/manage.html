@@ -227,10 +227,11 @@
 				  <input type="checkbox" id="nav-toggle" class="nav-toggle" >
 				  <nav>
 					<ul>
-					  <li><a href="#">Home</a></li>
+					  <li><a class="nav-link" href="{% url 'index' %}">Home</a></li>
 					  <li><a href="#">Report</a></li>
 					  <li><a href="#">Contact</a></li>
-					  <li><a href="#" v-on:click="">Logout</a></li>
+
+					  <li><a class="nav-link" href="{% url 'home' %}">Logout</a></li>
 					</ul>
 				  </nav>
 				  <label for="nav-toggle" class="nav-toggle-label">
