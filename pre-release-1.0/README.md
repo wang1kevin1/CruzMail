@@ -2,28 +2,9 @@
 
 ## Setting Up the WebApp: cruzmail/~
 
-### Resetting Database Migrations (Windows)
+### Resetting Database Migrations
 
-Remove any previous migrations:
-```
-Remove-Item *\migrations\*.py -Exclude __init__.py
-Remove-Item *\migrations\*.pyc
-```
-
-Drop the database:
-```
-$ mysql -u root -p < cruzmail_db.sql
-```
-
-Create new migrations:
-```
-python manage.py makemigrations
-python manage.py migrate
-```
-
-### Resetting Database Migrations (Unix)
-
-Remove any previous migrations:
+Remove any previous migrations (files in /migrations/ besides _init__.py):
 ```
 find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
 find . -path "*/migrations/*.pyc" -delete
