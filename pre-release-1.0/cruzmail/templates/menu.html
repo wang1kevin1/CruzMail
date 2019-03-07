@@ -300,7 +300,9 @@ button:hover:before {
 <body>
     <div class="wrapper">
       <div class="btn">
-        <button type ="button" style="top: 45%; left: 30%;" onclick="window.location.href='/manage'" >Packages</button>
+        <button type ="button" style="top: 45%; left: 30%;" onclick="window.location.href='/manage'">
+          <img src="url('{% static 'img/sammy_slug.jpg' %}" alt="Packages">
+          <br>Packages</button>
         <button type ="button" style="top: 65%; left: 30%;" onclick="window.location.href='/mailstop'">Mail Stops</button>
         <button type ="button" style="top: 45%; left: 70%;" onclick="window.location.href='/person'">People</button>
         <button type ="button" style="top: 65%; left:70%">Help Center</button>
