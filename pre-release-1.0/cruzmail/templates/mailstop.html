@@ -226,7 +226,7 @@
 
 
 		<header>
-			<h1 class="logo"><img src="../static/img/pages/thumbnail_mailstop.png">  Mailstops</h1>
+			<h1 class="logo"><img src="../static/img/pages/thumbnail_mailstop.png"> Mailstops</h1>
 			<input type="checkbox" id="nav-toggle" class="nav-toggle">
 			<nav>
 				<ul>
@@ -252,8 +252,6 @@
 	    </textarea>
 
 		<button v-on:click="queryMailstop();">Search</button>
-		<button v-on:click="newMailstopView = true;">Add Mailstop</button>
-		<button v-on:click="deactivateMailstop();">Deactivate</button>
 
 		<!-- adding new mailstop overlay -->
 		<div id="overlay" v-if="newMailstopView==true">
@@ -372,6 +370,12 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="text-center">
+			<input class="btn btn-primary" value="Add Mailstop" v-on:click="newMailstopView = true;" />
+			<input class="btn btn-primary" value="Deactivate Mailstop" v-on:click="deactivateMailstop();" />
+		</div>
+
 	</div>
 
 
