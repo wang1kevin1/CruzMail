@@ -21,13 +21,7 @@ from django.contrib import admin
 from .import views
 
 #new.....
-from .views import (
-    CollectionPageViews,
-    HomePageViews, 
-    ManagePageViews, 
-    MailstopPageViews,
-    MenuPageViews,
-)
+
 from django.urls import path, include
 from django.views.generic import TemplateView
 
@@ -36,13 +30,13 @@ urlpatterns = [
     url(r'^$', views.home, name="home"),
     url(r'^index', views.index, name="index"),
     url(r'^admin/', admin.site.urls),
-   
+    path('accounts/', include('django.contrib.auth.urls')),
 
-    path('manage/', ManagePageViews.as_view(), name='manage'),
-    path('collection/', CollectionPageViews.as_view(), name='collection'),
-    path('',        HomePageViews.as_view(),   name='home'),
-    path('menu/', MenuPageViews.as_view(), name='menu'),
-    path('mailstop/', MailstopPageViews.as_view(), name='mailstop'),
+    path('manage/', views.manage, name='manage'),
+    path('collection/', views.collection, name='collection'),
+    path('',        views.home,   name='home'),
+    path('menu/', views.menu, name='menu'),
+    path('mailstop/', views.mailstop, name='mailstop'),
     #path('collection/', CollectionPageViews>as_view(), name='users'),
 
     url(r'^account/', include('cruzmail.account.urls')),
