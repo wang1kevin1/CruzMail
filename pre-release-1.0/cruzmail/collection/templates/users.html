@@ -264,25 +264,26 @@
 
     <div style="border-bottom:10px;"></div>
 
-    <div v-for="user_titles in users" class="row" style="width:100%">
+    <div style="overflow:scroll; height: 50%; overflow-x:hidden; overflow-y:overlay;">
+      <div v-for="user_titles in users" class="row" style="width:100%">
 
-      <div class="col_title" style=" width:50%;">
+        <div class="col_title" style=" width:50%;">
 
-        <div style="float:left;">
-          <input type="checkbox" v-model="user_titles.is_deleted">
-          </input>
+          <div style="float:left;">
+            <input type="checkbox" v-model="user_titles.is_deleted">
+            </input>
+          </div>
+
+          ${user_titles.name}
+
+        </div>
+        <div class="col_title" style=" width:50%;">
+          ${user_titles.email}
         </div>
 
-        ${user_titles.name}
 
       </div>
-      <div class="col_title" style=" width:50%;">
-        ${user_titles.email}
-      </div>
-
-
     </div>
-
   </div>
   <div class="text-center">
     <input class="btn btn-primary" value="New Employee" onclick="window.location.href='/account/create'" />
@@ -293,4 +294,5 @@
 <script src="{% static 'js/vue.js' %}"></script>
 <script src="{% static 'js/manage_html.js' %}"></script>
 <link href="{% static 'css/manage.css' %}" rel="stylesheet">
+
 </html>
