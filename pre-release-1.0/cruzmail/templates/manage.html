@@ -1,370 +1,374 @@
-
 {% load staticfiles %}
 
-<html>	
-    <head>
-    	<html lang="en">	
-    <head>
-			<style>
-					@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
-			
-					:root {
-					  --background: #2E5A7D
-					}
-					
-					/*
+<html>
+
+<head>
+	<html lang="en">
+
+	<head>
+		<style>
+			@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
+
+			:root {
+				--background: #2E5A7D
+			}
+
+			/*
 					  #305371 for background
 					  #2C5779 nav bar 
 					*/
-					*, *::before, *::after {
-					  box-sizing: border-box;
-					}
-					
-					body {
-						margin: 0;
-						background: #305371;
-						font-family: 'Work Sans', sans-serif;
-						font-weight: 400;
-					}
-					
-					.content {
-					  height: 200vh;
-					  background-image: url(//unsplash.it/1000/1000);
-					  background-color: #333; /*    */
-					  background-blend-mode: multiply;
-					  background-size: cover;
-					  display: grid;
-					  place-items: center;
-					}
-					
-					/* navigation styles start here */
-					
-					header {
-					  background: var(--background);
-					  text-align: center;
-					  position: fixed;
-					  z-index: 999; 
-					  width: 100%;
-					}
-					
-					/*stuff i just found online*/
-					.nav-toggle {
-					  position: absolute !important;
-					  top: -9999px !important;
-					  left: -9999px !important;
-					}
-					
-					.nav-toggle:focus ~ .nav-toggle-label {
-					  outline: 3px solid rgba(lightblue, .75);
-					}
-					
-					.nav-toggle-label {
-					  position: absolute;
-					  top: 0;
-					  left: 0;
-					  margin-left: 1em;
-					  height: 100%;
-					  display: flex;
-					  align-items: center;
-					}
-					
-					.nav-toggle-label span,
-					.nav-toggle-label span::before,
-					.nav-toggle-label span::after {
-					  display: block;
-					  background: white;
-					  height: 2px;
-					  width: 2em;
-					  border-radius: 2px;
-					  position: relative;
-					}
-					
-					.nav-toggle-label span::before,
-					.nav-toggle-label span::after {
-					  content: '';
-					  position: absolute;
-					}
-					
-					.nav-toggle-label span::before {
-					  bottom: 7px;
-					}
-					
-					.nav-toggle-label span::after {
-					  top: 7px;
-					}
-					
-					nav {
-					  position: absolute;
-					  text-align: left;
-					  top: 100%;
-					  left: 0;
-					  background: var(--background);
-					  width: 100%;
-					  transform: scale(1, 0);
-					  transform-origin: top;
-					  transition: transform 400ms ease-in-out;
-					}
-					
-					nav ul {
-					  margin: 0;
-					  padding: 0;
-					  list-style: none;
-					}
-					
-					nav li {
-					  margin-bottom: 1em;
-					  margin-left: 1em;
-					}
-					
-					nav a {
-					  color: white;
-					  text-decoration: none;
-					  font-size: 1.2rem;
-					  text-transform: uppercase;
-					  opacity: 0;
-					  transition: opacity 150ms ease-in-out;
-					}
-					
-					nav a:hover {
-					  color: #000;
-					}
-					
-					.nav-toggle:checked ~ nav {
-					  transform: scale(1,1);
-					}
-					
-					.nav-toggle:checked ~ nav a {
-					  opacity: 1;
-					  transition: opacity 250ms ease-in-out 250ms;
-					}
-					
-					@media screen and (min-width: 800px) {
-					  .nav-toggle-label {
-						display: none;
-					  }
-					
-					  header {
-						display: grid;
-						grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
-					  }
-					  
-					  .logo {
-						grid-column: 2 / 3;
-					  }
-					  
-					  nav {
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 0;
+				background: #305371;
+				font-family: 'Work Sans', sans-serif;
+				font-weight: 400;
+			}
+
+			.content {
+				height: 200vh;
+				background-image: url(//unsplash.it/1000/1000);
+				background-color: #333;
+				/*    */
+				background-blend-mode: multiply;
+				background-size: cover;
+				display: grid;
+				place-items: center;
+			}
+
+			/* navigation styles start here */
+
+			header {
+				background: var(--background);
+				text-align: center;
+				position: fixed;
+				z-index: 999;
+				width: 100%;
+			}
+
+			/*stuff i just found online*/
+			.nav-toggle {
+				position: absolute !important;
+				top: -9999px !important;
+				left: -9999px !important;
+			}
+
+			.nav-toggle:focus~.nav-toggle-label {
+				outline: 3px solid rgba(lightblue, .75);
+			}
+
+			.nav-toggle-label {
+				position: absolute;
+				top: 0;
+				left: 0;
+				margin-left: 1em;
+				height: 100%;
+				display: flex;
+				align-items: center;
+			}
+
+			.nav-toggle-label span,
+			.nav-toggle-label span::before,
+			.nav-toggle-label span::after {
+				display: block;
+				background: white;
+				height: 2px;
+				width: 2em;
+				border-radius: 2px;
+				position: relative;
+			}
+
+			.nav-toggle-label span::before,
+			.nav-toggle-label span::after {
+				content: '';
+				position: absolute;
+			}
+
+			.nav-toggle-label span::before {
+				bottom: 7px;
+			}
+
+			.nav-toggle-label span::after {
+				top: 7px;
+			}
+
+			nav {
+				position: absolute;
+				text-align: left;
+				top: 100%;
+				left: 0;
+				background: var(--background);
+				width: 100%;
+				transform: scale(1, 0);
+				transform-origin: top;
+				transition: transform 400ms ease-in-out;
+			}
+
+			nav ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			nav li {
+				margin-bottom: 1em;
+				margin-left: 1em;
+			}
+
+			nav a {
+				color: white;
+				text-decoration: none;
+				font-size: 1.2rem;
+				text-transform: uppercase;
+				opacity: 0;
+				transition: opacity 150ms ease-in-out;
+			}
+
+			nav a:hover {
+				color: #000;
+			}
+
+			.nav-toggle:checked~nav {
+				transform: scale(1, 1);
+			}
+
+			.nav-toggle:checked~nav a {
+				opacity: 1;
+				transition: opacity 250ms ease-in-out 250ms;
+			}
+
+			@media screen and (min-width: 800px) {
+				.nav-toggle-label {
+					display: none;
+				}
+
+				header {
+					display: grid;
+					grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+				}
+
+				.logo {
+					grid-column: 2 / 3;
+				}
+
+				nav {
 					/*  this block needed for edge support*/
-						position: relative;
-						text-align: left;
-						transition: none;
-						transform: scale(1,1);
-						background: none;
-						top: initial;
-						left: initial;
-					  
-						/*grid for where to align title */
-						grid-column: 3 / 4;
-						display: flex;
-						justify-content: flex-end;
-						align-items: center;
-					  }
-					  
-					  nav ul {
-						display: flex;
-					  }
-					  
-					  nav li {
-						margin-left: 3em;
-						margin-bottom: 0;
-					  }
-					  
-					  nav a {
-						opacity: 1;
-						position: relative;
-					  }
-					  
-					  nav a::before {
-						content: '';
-						display: block;
-						height: 5px;
-						background: black;
-						position: absolute;
-						top: -.75em;
-						left: 0;
-						right: 0;
-						transform: scale(0, 1);
-						transition: transform ease-in-out 250ms;
-					  }
-					  
-					  nav a:hover::before {
-						transform: scale(1,1);
-					  }
-					}
-				  
-			
-			   /*------------------------CSS FOR THE BUTTONS--------------------------------------*/   
-			 
-			button:hover{
+					position: relative;
+					text-align: left;
+					transition: none;
+					transform: scale(1, 1);
+					background: none;
+					top: initial;
+					left: initial;
+
+					/*grid for where to align title */
+					grid-column: 3 / 4;
+					display: flex;
+					justify-content: flex-end;
+					align-items: center;
+				}
+
+				nav ul {
+					display: flex;
+				}
+
+				nav li {
+					margin-left: 3em;
+					margin-bottom: 0;
+				}
+
+				nav a {
+					opacity: 1;
+					position: relative;
+				}
+
+				nav a::before {
+					content: '';
+					display: block;
+					height: 5px;
+					background: black;
+					position: absolute;
+					top: -.75em;
+					left: 0;
+					right: 0;
+					transform: scale(0, 1);
+					transition: transform ease-in-out 250ms;
+				}
+
+				nav a:hover::before {
+					transform: scale(1, 1);
+				}
+			}
+
+
+			/*------------------------CSS FOR THE BUTTONS--------------------------------------*/
+
+			button:hover {
 				background: #5c5b5b;
 				cursor: pointer;
-			
-			
-			}	
-			 </style>
-			  <meta charset="UTF-8">
-			  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-			  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-			 <!-- Compiled and minified CSS -->
-			 <!--
+
+
+			}
+		</style>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<!-- Compiled and minified CSS -->
+		<!--
 
 		  		-->
-			  <title>Cruz Mail</title>
-		  
-			 
-			  
-			  <header>
-				  <h1 class="logo">Packages</h1>
-				  <input type="checkbox" id="nav-toggle" class="nav-toggle" >
-				  <nav>
-					<ul>
-					  <li><a class="nav-link" href="{% url 'menu' %}">Home</a></li>
-					  <li><a class="nav-link" href="{% url 'logging_out' %}">Logout</a></li>
-					</ul>
-				  </nav>
-				  <label for="nav-toggle" class="nav-toggle-label">
-					<span></span>
-				  </label>
-			  </header>
-    </head> 
-    
-    <body>
-<!--...................................Header for Manage................................................................-->
-	<div id="my_view">
-	    
-	     <div class="body" style="background-color:#305371; height:20%;"></div>
+		<title>Cruz Mail</title>
 
-	     &nbsp; &nbsp; &nbsp;Search by Mailstop
-        <textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="test">
+
+
+		<header>
+			<h1 class="logo"><img src="../static/img/thumbnail_package.png">  Packages</h1>
+			<input type="checkbox" id="nav-toggle" class="nav-toggle">
+			<nav>
+				<ul>
+					<li><a class="nav-link" href="{% url 'menu' %}">Home</a></li>
+					<li><a class="nav-link" href="{% url 'logging_out' %}">Logout</a></li>
+				</ul>
+			</nav>
+			<label for="nav-toggle" class="nav-toggle-label">
+				<span></span>
+			</label>
+		</header>
+	</head>
+
+<body>
+	<!--...................................Header for Manage................................................................-->
+	<div id="my_view">
+
+		<div class="body" style="background-color:#305371; height:20%;"></div>
+
+		&nbsp; &nbsp; &nbsp;Search by Mailstop
+		<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="test">
 		    ${test}
 	    </textarea>
 
 		<button v-on:click="queryPackage();">Search</button>
-	    <button v-on:click="newPackageView = true;">New Package</button>
+		<button v-on:click="newPackageView = true;">New Package</button>
 
-	    {% if user.is_authenticated %}
-	    	ok
-	    {% endif %}
-	    <!-- adding new package overlay -->
-	    <div id="overlay" v-if="newPackageView==true">
-	    	<div style="font-size:30px" class = "exit_button" v-on:click="newPackageView=false;">&#129409;
-	    	</div>
-	    	<div class="new_package" style="overflow:scroll; overflow-x:hidden;">
-	    		New Package
+		{% if user.is_authenticated %}
+		ok
+		{% endif %}
+		<!-- adding new package overlay -->
+		<div id="overlay" v-if="newPackageView==true">
+			<div style="font-size:30px" class="exit_button" v-on:click="newPackageView=false;">&#129409;
+			</div>
+			<div class="new_package" style="overflow:scroll; overflow-x:hidden;">
+				New Package
 
-	    		<br>Tracking Number
+				<br>Tracking Number
 				<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="new_tracknum">
 				    ${new_tracknum}
 			    </textarea>
 
-	    		<br>name
-	    		<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="new_name">
+				<br>name
+				<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="new_name">
 				    ${new_name}
 			    </textarea>
 
-	    		<br>mailstop
-	    		<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="new_mailstop">
+				<br>mailstop
+				<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="new_mailstop">
 				    ${new_mailstop}
 			    </textarea>
-	    		
-	    		<br>sign
-	    		<select class="list" style="background-color: rgb(236, 236, 250)" v-model="new_sign">
-				    <option value="Yes">Yes</option>
-  					<option value="No">No</option>
-			    </select>
 
-	    		<br>email
-	    		<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="new_email">
+				<br>sign
+				<select class="list" style="background-color: rgb(236, 236, 250)" v-model="new_sign">
+					<option value="Yes">Yes</option>
+					<option value="No">No</option>
+				</select>
+
+				<br>email
+				<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="new_email">
 				    ${new_email}
 			    </textarea>
 
-	    		<br>remark
-	    		<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="new_remark">
+				<br>remark
+				<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="new_remark">
 				    ${new_remark}
 			    </textarea>
 
-	    		<br>
-	    		<button v-on:click="addPackage(); newPackageView = false;">Add Package</button>
-	    	</div>
-	    </div>
-	    <button class="buttons" style="top:80%; right:-72px; z-index:2;" v-on:click="packageDelivered();
+				<br>
+				<button v-on:click="addPackage(); newPackageView = false;">Add Package</button>
+			</div>
+		</div>
+		<button class="buttons" style="top:80%; right:-72px; z-index:2;" v-on:click="packageDelivered();
 		                					  queryPackage();"> Update as Recieved</button>
-	
-	
 
-<!--...................................List Of Packages................................................................-->
-	    <div class="list2">
-		    <div class="row">
 
-			    <div class="col_title" style = "background-color: lightcoral; width:30%;"> 
 
-			    	<div style="float:left;">
-			    		<input type="checkbox" v-on:click="change_to_true();" v-model="allTrue">
-			    	    </input>
-			    	</div>
-			        Status
+		<!--...................................List Of Packages................................................................-->
+		<div class="list2">
+			<div class="row">
 
-		 	    </div>
-			    <div class="col_title" style = "background-color: lightcoral; width:35%; height:19.667px;">
-			        Tracking#
-			    </div>
-			    <div class="col_title" style = "background-color: lightcoral; width:35%; height:19.667px;">
-	                Mailstop
-	            </div>
+				<div class="col_title" style="background-color: lightcoral; width:30%;">
 
-	        </div>
+					<div style="float:left;">
+						<input type="checkbox" v-on:click="change_to_true();" v-model="allTrue">
+						</input>
+					</div>
+					Status
+
+				</div>
+				<div class="col_title" style="background-color: lightcoral; width:35%; height:19.667px;">
+					Tracking#
+				</div>
+				<div class="col_title" style="background-color: lightcoral; width:35%; height:19.667px;">
+					Mailstop
+				</div>
+
+			</div>
 			<div style="border-bottom:10px;"></div>
 
 			<div style="overflow:scroll; height: 54%; overflow-x:hidden; overflow-y:overlay;">
-	    	    <div v-for="info in Info"  class="row" style="width:100%">
+				<div v-for="info in Info" class="row" style="width:100%">
 
-	            	<div  v-if="info.index != currentView">
-		            	<div class="col_title" style="width:30%;">
-		            		<div style="float:left;">
-		           		   		<input type="checkbox" v-model="info.isDelivered">
-                  			   	</input>  
-                  			</div>
-
-                      		<div v-on:click="currentView = info.index">
-								${info.b} 
+					<div v-if="info.index != currentView">
+						<div class="col_title" style="width:30%;">
+							<div style="float:left;">
+								<input type="checkbox" v-model="info.isDelivered">
+								</input>
 							</div>
-		                </div>
-		                <div class="col_title" style="width:35%;" v-on:click="currentView = info.index">
+
+							<div v-on:click="currentView = info.index">
+								${info.b}
+							</div>
+						</div>
+						<div class="col_title" style="width:35%;" v-on:click="currentView = info.index">
 							${info.a}
-		                </div>
-		                <div class="col_title" style="width:35%;" v-on:click="currentView = info.index">
-							${info.mailstop} 
-		                </div>
-		            </div>
-	            
-			    	<div v-if="info.index == currentView">
-		        		<div class="col_title" style="background-color: rgb(0,121,136); width:30%;">
-		        			<div style="float:left;">
-		      	    	      	<input type="checkbox" v-model="info.isDelivered">
-                	      		</input>  
-                      		</div>
-					
+						</div>
+						<div class="col_title" style="width:35%;" v-on:click="currentView = info.index">
+							${info.mailstop}
+						</div>
+					</div>
+
+					<div v-if="info.index == currentView">
+						<div class="col_title" style="background-color: rgb(0,121,136); width:30%;">
+							<div style="float:left;">
+								<input type="checkbox" v-model="info.isDelivered">
+								</input>
+							</div>
+
 							<div v-on:click="currentView = -1">
-								${info.b} 
+								${info.b}
 							</div>
-	                	</div>
-	                	<div class="col_title" style="background-color: rgb(0,121,136); width:35%;" v-on:click="currentView = -1">
+						</div>
+						<div class="col_title" style="background-color: rgb(0,121,136); width:35%;" v-on:click="currentView = -1">
 							${info.a}
-	                	</div>
-	                	<div class="col_title" style="background-color: rgb(0,121,136); width:35%;" v-on:click="currentView = -1">
-							${info.mailstop} 
-	                	</div>
+						</div>
+						<div class="col_title" style="background-color: rgb(0,121,136); width:35%;" v-on:click="currentView = -1">
+							${info.mailstop}
+						</div>
 
-	                	<br>&nbsp;&nbsp;Name
+						<br>&nbsp;&nbsp;Name
 						<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="info.name">
 			    			${info.name}
 	   				 	</textarea>
@@ -374,11 +378,11 @@
 			    			${info.email}
 	   				 	</textarea>
 
-	   				 	<br>&nbsp;&nbsp;Signing?
+						<br>&nbsp;&nbsp;Signing?
 						<select class="list" style="background-color: rgb(236, 236, 250)" v-model="info.sign">
-				    		<option value="yes">Yes</option>
-  							<option value="no">No</option>
-					    </select>
+							<option value="yes">Yes</option>
+							<option value="no">No</option>
+						</select>
 
 						<br>&nbsp;&nbsp;Weight
 						<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="info.weight">
@@ -386,25 +390,25 @@
 	   				 	</textarea>
 
 						<br>&nbsp;&nbsp;Recieve Date:
-			    			${info.c}
+						${info.c}
 
 
-		   			 	<br>
-	   				 	<button v-on:click="updatePackage()">
-	   				 		Update
-	   				 	</button>
+						<br>
+						<button v-on:click="updatePackage()">
+							Update
+						</button>
 
-	   			    	<div style="border-bottom:3px solid rgb(255, 96, 96);">
-	   					</div>
-	   				</div>
+						<div style="border-bottom:3px solid rgb(255, 96, 96);">
+						</div>
+					</div>
 				</div>
-            </div>
-   	    </div>
+			</div>
+		</div>
 	</div>
 
 	<script src="{% static 'js/jquery-3.2.1.js' %}"></script>
 	<script src="{% static 'js/vue.js' %}"></script>
-        <script src="{% static 'js/manage_html.js' %}"></script>
-        <link href="{% static 'css/manage.css' %}" rel="stylesheet">
+	<script src="{% static 'js/manage_html.js' %}"></script>
+	<link href="{% static 'css/manage.css' %}" rel="stylesheet">
 
 </html>
