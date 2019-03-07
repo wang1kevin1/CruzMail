@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 @csrf_exempt
 def query_package(request):
 
-    if not request.user.is_authenticated():
+    if request.user is None:
       return
     #if user is not None:
     #  login(request, user)
@@ -36,8 +36,9 @@ def query_package(request):
 @csrf_exempt
 def package_delivered(request):
 
-    if not request.user.is_authenticated():
+    if request.user is None:
       return
+
     t = packages_master.objects.get(pkg_tracking=request.POST.get('pkg_tracking'))
     t.pkg_status='received'
     t.save()
@@ -46,7 +47,7 @@ def package_delivered(request):
 @csrf_exempt
 def update_package(request):
 
-    if not request.user.is_authenticated():
+    if request.user is None:
       return
 
     t = packages_master.objects.get(pkg_tracking=request.POST.get('track'))
@@ -60,7 +61,7 @@ def update_package(request):
 @csrf_exempt
 def add_package(request):
 
-    if not request.user.is_authenticated():
+    if request.user is None:
       return
 
     packages_master.objects.create(pkg_tracking = request.POST.get('track'),
@@ -77,7 +78,7 @@ def add_package(request):
 @csrf_exempt
 def query_mailstop(request):
 
-    if not request.user.is_authenticated():
+    if request.user is None:
       return
 
     params = []
@@ -96,6 +97,10 @@ def query_mailstop(request):
 
 @csrf_exempt
 def activate_mailstop(request):
+
+    if request.user is None:
+      return
+
     t = mailstops_master.objects.get(mailstop=request.POST.get('mailstop'))
     t.ms_status='Active'
     t.save()
@@ -103,6 +108,10 @@ def activate_mailstop(request):
 
 @csrf_exempt
 def deactivate_mailstop(request):
+
+    if request.user is None:
+      return
+
     t = mailstops_master.objects.get(mailstop=request.POST.get('mailstop'))
     t.ms_status='Inactive'
     t.save()
@@ -111,7 +120,7 @@ def deactivate_mailstop(request):
 @csrf_exempt
 def update_mailstop(request):
 
-    if not request.user.is_authenticated():
+    if request.user is None:
       return
 
     t = mailstops_master.objects.get(mailstop=request.POST.get('ms_id'))
@@ -125,7 +134,7 @@ def update_mailstop(request):
 @csrf_exempt
 def add_mailstop(request):
 
-    if not request.user.is_authenticated():
+    if request.user is None:
       return
 
     mailstops_master.objects.create(mailstop        = request.POST.get('ms_id'),
@@ -140,7 +149,7 @@ def add_mailstop(request):
 @csrf_exempt
 def query_person(request):
 
-    if not request.user.is_authenticated():
+    if request.user is None:
       return
 
     params = []
@@ -159,7 +168,7 @@ def query_person(request):
 @csrf_exempt
 def away_person(request):
 
-    if not request.user.is_authenticated():
+    if request.user is None:
       return
 
     t = people_master.objects.get(name=request.POST.get('name'))
@@ -169,6 +178,10 @@ def away_person(request):
 
 @csrf_exempt
 def update_person(request):
+
+    if request.user is None:
+      return
+
     t = people_master.objects.get(name=request.POST.get('ppl_name'))
     t.ppl_email   = request.POST.get('ppl_email')
     t.ppl_status  = request.POST.get('ppl_status')
@@ -179,7 +192,7 @@ def update_person(request):
 @csrf_exempt
 def add_person(request):
 
-    if not request.user.is_authenticated():
+    if request.user is None:
       return
 
     people_master.objects.create(name        = request.POST.get('ppl_name'),
@@ -194,7 +207,7 @@ def add_person(request):
 @csrf_exempt
 def get_users(request):
 
-  if not request.user.is_authenticated():
+  if request.user is None:
     return
 
   name_users = []
@@ -213,9 +226,9 @@ def get_users(request):
 @csrf_exempt
 def get_emails(request):
 
-  if not request.user.is_authenticated():
+  if request.user is None:
     return
-    
+
   email_names = []
   
   
@@ -232,7 +245,7 @@ def get_emails(request):
 @csrf_exempt
 def delete_users(request):
 
-  if not request.user.is_authenticated():
+  if request.user is None:
     return
 
   users = User.objects.get(username=request.POST.get('key'))
