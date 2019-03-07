@@ -205,6 +205,14 @@
 				}
 			}
 
+			.footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+      }
+
 
 			/*------------------------CSS FOR THE BUTTONS--------------------------------------*/
 
@@ -370,8 +378,7 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="text-center"></div>
+		<div class="text-center">
 			<input class="btn btn-primary" value="Add Mailstop" v-on:click="newMailstopView = true;" />
 			<input class="btn btn-primary" value="Deactivate Mailstop" v-on:click="deactivateMailstop();" />
 		</div>
