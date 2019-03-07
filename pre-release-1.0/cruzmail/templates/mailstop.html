@@ -205,14 +205,6 @@
 				}
 			}
 
-			.footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-      }
-
 
 			/*------------------------CSS FOR THE BUTTONS--------------------------------------*/
 
@@ -249,6 +241,7 @@
 	</head>
 
 <body>
+	<!--...................................Header for People................................................................-->
 	<div id="mailstop_view">
 
 		<div class="body" style="background-color:#305371; height:20%;">
@@ -378,10 +371,12 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="text-center">
 			<input class="btn btn-primary" value="New Mailstop" v-on:click="newMailstopView = true;" />
 			<input class="btn btn-primary" value="Deactivate Mailstop" v-on:click="deactivateMailstop();" />
 		</div>
+
 	</div>
 
 
