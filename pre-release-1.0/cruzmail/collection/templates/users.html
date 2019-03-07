@@ -286,8 +286,8 @@
     </div>
   </div>
   <div class="text-center">
-    <input class="btn btn-primary" value="New Employee" onclick="window.location.href='/account/create'" />
-    <input class="btn btn-primary" value="Remove Employee" v-on:click="delete_user()" />
+    <button class="btn btn-primary" onclick="window.location.href='/account/create'">New Employee</button>
+    <button class="btn btn-primary" v-on:click="delete_user()">Remove Employee</button>
   </div>
 </div>
 <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
