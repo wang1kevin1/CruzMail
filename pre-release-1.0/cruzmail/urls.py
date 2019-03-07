@@ -29,14 +29,15 @@ urlpatterns = [
     url(r'^$', views.home, name="home"),
     url(r'^index', views.index, name="index"),
     url(r'^admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),
 
+    path('accounts/', include('django.contrib.auth.urls')),
     path('manage/', views.manage, name='manage'),
     path('collection/', views.collection, name='collection'),
     path('',        views.home,   name='home'),
     path('menu/', views.menu, name='menu'),
     path('mailstop/', views.mailstop, name='mailstop'),
     path('logging_out/', views.logging_out, name='logging_out'),
+    path('admin',)
     path('person/', views.person, name='person'),
     #path('collection/', CollectionPageViews>as_view(), name='users'),
 
