@@ -227,7 +227,7 @@
 
 
 		<header>
-			<h1 class="logo"><img src="../static/img/pages/thumbnail_package.png">  Packages</h1>
+			<h1 class="logo"><img src="../static/img/pages/thumbnail_package.png"> Packages</h1>
 			<input type="checkbox" id="nav-toggle" class="nav-toggle">
 			<nav>
 				<ul>
@@ -253,7 +253,6 @@
 	    </textarea>
 
 		<button v-on:click="queryPackage();">Search</button>
-		<button v-on:click="newPackageView = true;">New Package</button>
 
 		{% if user.is_authenticated %}
 		ok
@@ -300,10 +299,6 @@
 				<button v-on:click="addPackage(); newPackageView = false;">Add Package</button>
 			</div>
 		</div>
-		<button class="buttons" style="top:80%; right:-72px; z-index:2;" v-on:click="packageDelivered();
-		                					  queryPackage();"> Update as Recieved</button>
-
-
 
 		<!--...................................List Of Packages................................................................-->
 		<div class="list2">
@@ -403,6 +398,11 @@
 					</div>
 				</div>
 			</div>
+		</div>
+
+		<div class="text-center">
+			<input class="btn btn-primary" value="New Package" v-on:click="newManageView = true;" />
+			<input class="btn btn-primary" value="Deliver Package" v-on:click="packageDelivered();" />
 		</div>
 	</div>
 

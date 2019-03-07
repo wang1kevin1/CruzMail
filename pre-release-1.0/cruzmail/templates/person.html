@@ -251,8 +251,6 @@
 	    </textarea>
 
 		<button v-on:click="queryPerson();">Search</button>
-		<button v-on:click="newPersonView = true;">Add Person</button>
-		<button v-on:click="awayPerson();">Mark as Away</button>
 
 		<!-- adding new person overlay -->
 		<div id="overlay" v-if="newPersonView==true">
@@ -361,6 +359,12 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="text-center">
+			<input class="btn btn-primary" value="New Person" v-on:click="newPersonView = true;" />
+			<input class="btn btn-primary" value="Mark as Away" v-on:click="awayPerson();" />
+		</div>
+
 	</div>
 
 
