@@ -37,7 +37,6 @@ urlpatterns = [
     path('menu/', views.menu, name='menu'),
     path('mailstop/', views.mailstop, name='mailstop'),
     path('logging_out/', views.logging_out, name='logging_out'),
-
     path('person/', views.person, name='person'),
     #path('collection/', CollectionPageViews>as_view(), name='users'),
 

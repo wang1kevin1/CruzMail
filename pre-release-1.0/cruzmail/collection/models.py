@@ -15,11 +15,18 @@ class mailstops_master(models.Model):
 
     ms_name = models.CharField(max_length = 30)
 
-    ms_route_choice = models.CharField(max_length = 20)
+    ms_route_choice = (
+        ('W', 'W'),
+        ('C', 'C'),
+        ('E', 'E'))
+    ms_route  = models.CharField(max_length = 1, choices = ms_route_choice)
+    
     ms_route_order = models.CharField(max_length = 3)
 
-    ms_status_choice = models.CharField(max_length = 20)
-    ms_status = models.CharField(max_length = 8,  default = '0')
+    ms_status_choice = (
+        ('Active', 'Active'),
+        ('Inactive', 'Inactive'),)
+    ms_status = models.CharField(max_length = 8, choices = ms_status_choice, default = 'Active')
 
 
 class people_master(models.Model):
