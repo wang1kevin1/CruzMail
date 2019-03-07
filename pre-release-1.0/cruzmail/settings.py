@@ -84,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cruzmail_db',
         'USER': 'root',
-        'PASSWORD' : 'changeme',
+        'PASSWORD' : 'hihihihi1',
         'HOST' : '127.0.0.1',
         'PORT' : '3306',
     }

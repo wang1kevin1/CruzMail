@@ -1,6 +1,7 @@
 var myModel = {
     name: "Ashley",
     test: '', 
+    test2: '',
     new_mailstop: '',
     new_route: '',
     index: 0,
@@ -128,8 +129,8 @@ var myViewModel = new Vue({
 						    name: objHold.name,
 						    mailstop: objHold.mailstop,
 						    sign: objHold.sign,
-				     		    weight: objHold.weight,
-				     		    email: objHold.email,
+				     		weight: objHold.weight,
+				     		email: objHold.email,
 						    isDelivered:false,
 						    index: index});
 			     index++;
