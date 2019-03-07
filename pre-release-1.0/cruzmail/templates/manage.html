@@ -230,7 +230,7 @@
 					  <li><a href="#">Home</a></li>
 					  <li><a href="#">Report</a></li>
 					  <li><a href="#">Contact</a></li>
-					  <li><a href="#">Logout</a></li>
+					  <li><a href="#" v-on:click="">Logout</a></li>
 					</ul>
 				  </nav>
 				  <label for="nav-toggle" class="nav-toggle-label">
@@ -253,7 +253,6 @@
 		<button v-on:click="queryPackage();">Search</button>
 	    <button v-on:click="newPackageView = true;">New Package</button>
 
-
 	    <!-- adding new package overlay -->
 	    <div id="overlay" v-if="newPackageView==true">
 	    	<div style="font-size:30px" class = "exit_button" v-on:click="newPackageView=false;">&#129409;
@@ -265,7 +264,7 @@
 				<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="new_tracknum">
 				    ${new_tracknum}
 			    </textarea>
-	    		
+
 	    		<br>name
 	    		<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="new_name">
 				    ${new_name}
@@ -277,9 +276,10 @@
 			    </textarea>
 	    		
 	    		<br>sign
-	    		<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="new_sign">
-				    ${new_sign}
-			    </textarea>
+	    		<select class="list" style="background-color: rgb(236, 236, 250)" v-model="new_sign">
+				    <option value="Yes">Yes</option>
+  					<option value="No">No</option>
+			    </select>
 
 	    		<br>email
 	    		<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="new_email">
@@ -297,6 +297,7 @@
 	    </div>
 	    <button class="buttons" style="top:80%; right:-72px; z-index:2;" v-on:click="packageDelivered();
 		                					  queryPackage();"> Update as Recieved</button>
+	
 	
 
 <!--...................................List Of Packages................................................................-->
@@ -362,25 +363,25 @@
 							${info.mailstop} 
 	                	</div>
 
-
-						<br>&nbsp;&nbsp;Signing?
-						<textarea style="background-color: rgb(236, 236, 250)" v-model="info.sign">
-			    			${info.sign}
+	                	<br>&nbsp;&nbsp;Name
+						<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="info.name">
+			    			${info.name}
 	   				 	</textarea>
 
 						<br>&nbsp;&nbsp;email
-						<textarea style="background-color: rgb(236, 236, 250)" v-model="info.email">
+						<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="info.email">
 			    			${info.email}
 	   				 	</textarea>
 
-						<br>&nbsp;&nbsp;Weight
-						<textarea style="background-color: rgb(236, 236, 250)" v-model="info.weight">
-			    			${info.weight}
-	   				 	</textarea>
+	   				 	<br>&nbsp;&nbsp;Signing?
+						<select class="list" style="background-color: rgb(236, 236, 250)" v-model="info.sign">
+				    		<option value="yes">Yes</option>
+  							<option value="no">No</option>
+					    </select>
 
-						<br>&nbsp;&nbsp;Name
-						<textarea style="background-color: rgb(236, 236, 250)" v-model="info.name">
-			    			${info.name}
+						<br>&nbsp;&nbsp;Weight
+						<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="info.weight">
+			    			${info.weight}
 	   				 	</textarea>
 
 						<br>&nbsp;&nbsp;Recieve Date:
@@ -399,7 +400,6 @@
             </div>
    	    </div>
 	</div>
-
 
 	<script src="{% static 'js/jquery-3.2.1.js' %}"></script>
 	<script src="{% static 'js/vue.js' %}"></script>

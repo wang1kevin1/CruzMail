@@ -1,15 +1,19 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
-from django.http import *
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission
 from django.views.generic import TemplateView
 from django.views.decorators.csrf import csrf_exempt
 from .collection.models import mailstops_master, packages_master
+
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required, permission_required
 
 # PACKAGE VIEWS
 @csrf_exempt
 def query_package(request):
 
+    #if user is not None:
+    #  login(request, user)
     params = []    
     search = request.POST.get('search')
     index = int(request.POST.get('index'))
@@ -29,15 +33,14 @@ def query_package(request):
 
 @csrf_exempt
 def package_delivered(request):
-
+    logout(request)
     t = packages_master.objects.get(pkg_tracking=request.POST.get('pkg_tracking'))
-    t.pkg_status='recieved'
+    t.pkg_status='received'
     t.save()
     return JsonResponse(dict(test="ok"))
 
 @csrf_exempt
 def update_package(request):
-
     t = packages_master.objects.get(pkg_tracking=request.POST.get('track'))
     t.name =       request.POST.get('name')
     t.pkg_email =  request.POST.get('email')
@@ -129,18 +132,21 @@ def index(request):
 def home(request):
     return render(request, 'home.html')
 
-class HomePageViews(TemplateView):
-   template_name = 'index.html'
+@login_required(login_url='/account/login')
+def manage(request):
+    return render(request, 'manage.html')
 
-class ManagePageViews(TemplateView):
-    template_name = 'manage.html'
+@login_required(login_url='/account/login')
+def menu(request):
+  return render(request, 'menu.html')
 
-class MenuPageViews(TemplateView):
-    template_name = 'menu.html'
 
-class CollectionPageViews(TemplateView):
-    template_name = 'users.html'
+@login_required(login_url='/account/login')
+def collection(request):
+  return render(request, 'users.html')
 
-class MailstopPageViews(TemplateView):
-    template_name = 'mailstop.html'
+
+@login_required(login_url='/account/login')
+def mailstop(request):
+  return render(request, 'mailstop.html')
 
