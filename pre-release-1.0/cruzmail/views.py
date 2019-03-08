@@ -17,13 +17,15 @@ def query_package(request):
     #if user is not None:
     #  login(request, user)
     params = []    
+    delivered
     search = request.POST.get('search')
     index = int(request.POST.get('index'))
     for r in packages_master.objects.all():
+      # TODO: Need to add a delivered field
         if search is None or (len(search) <= len(r.pkg_tracking) and search == r.pkg_tracking[0:len(search)]):
-            t = dict(a = r.pkg_tracking,
-                     b = r.pkg_status,
-                     c = r.pkg_date_rec,
+            t = dict(tracking = r.pkg_tracking,
+                     status = r.pkg_status,
+                     received = r.pkg_date_rec,
                      name = r.name,
                      mailstop = r.mailstop,
                      sign = r.pkg_sign,
