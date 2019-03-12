@@ -38,20 +38,6 @@
 					<div class="collapse navbar-collapse" id="navbarResponsive">
 						<ul class="navbar-nav ml-auto">
 
-							
-
-							<!-- Login -->
-							<li {% if params.category != "account" and params.category != "collections" and params.category != "inbox" %}
-									{% if params.category != 'create' %}
-										class="nav-item active"
-									{ % else % }
-										class="nav-item"
-									{%  endif %}
-								{% else %}
-									style="display: none"
-								{% endif %}>
-								<a class="nav-link" href="{% url 'login' %}">Login</a>
-							</li>
 
 							<!-- Create Account -->
 							<li {% if params.category != "account" and params.category != "collections" and params.category != "inbox" %} 

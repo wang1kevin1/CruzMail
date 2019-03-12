@@ -19,6 +19,22 @@ def account(request):
 	else:
 		return redirect('/')
 
+def new_employee(request):
+	params = {}
+	params['category'] = 'new_employee'
+	if request.method == 'POST':
+		form = SignUpForm(request.POST)
+		if form.is_valid():
+			form.save()
+			username = form.cleaned_data.get('username')
+			raw_password = form.cleaned_data.get('password1')
+			user = authenticate(username=username, password=raw_password)
+			login(request, user)
+			return redirect('/User_Profile', {'user': user})
+	else:
+		form = SignUpForm()
+	return render(request, 'new_employee.html', {'form': form, 'params':params})
+
 def create(request):
 	params = {}
 	params['category'] = 'create'
@@ -30,7 +46,7 @@ def create(request):
 			raw_password = form.cleaned_data.get('password1')
 			user = authenticate(username=username, password=raw_password)
 			login(request, user)
-			return redirect('/collection', {'user': user})
+			return redirect('/manage', {'user': user})
 	else:
 		form = SignUpForm()
 	return render(request, 'create.html', {'form': form, 'params':params})
@@ -40,7 +56,7 @@ def logout(request):
 	return redirect('/', {'password_reset_form': PasswordResetForm})
 
 def collections(request):
-	return redirect('/collection')
+	return redirect('/manage')
 
 @csrf_exempt
 def update_user_bio(request):

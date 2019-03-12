@@ -25,7 +25,7 @@ SECRET_KEY = '7_=0u17^xlw8cwcp6z(9&_+a*@wmk@f7v0__&ialz1ily8gzgx'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0']
+#ALLOWED_HOSTS = ['0.0.0.0']
 
 
 # Application definition
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cruzmail',
     'rest_framework',
-    #'cruzmail.collection',
+    'cruzmail.collection',
     'cruzmail.account',
     #'cruzmail.inbox',
 ]
@@ -59,7 +59,7 @@ ROOT_URLCONF = 'cruzmail.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,14 +74,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cruzmail.wsgi.application'
 
+LOGIN_REDIRECT_URL = '/manage'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cruzmail_db',
+        'USER': 'root',
+        'PASSWORD' : 'Asdfg12345', #changeme
+        'HOST' : '127.0.0.1',
+        'PORT' : '3306',
     }
 }
 
@@ -125,4 +130,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '_static_root')
 
-ALLOWED_HOSTS = ['192.168.56.1', '127.0.0.1']
+ALLOWED_HOSTS = ['192.168.56.1', '127.0.0.1', '10.0.0.164', 'localhost', '*']

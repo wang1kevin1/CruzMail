@@ -6,9 +6,7 @@
 body {
   font-size: 20px;
   color: #333333;
-  font-family: 'Lora', 'Times New Roman', serif; 
-  background-color: #305371
-}
+  font-family: 'Lora', 'Times New Roman', serif; }
 
 p {
   line-height: 1.5;
@@ -79,7 +77,7 @@ body {
 #mainNav {
   position: absolute;
   border-bottom: 1px solid #eeeeee;
-  background-color: #2C5779;
+  background-color: white;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
   #mainNav .navbar-brand {
     font-weight: 800;
@@ -351,7 +349,3 @@ footer {
   color: white;
   border: 1px solid #0085A1;
   background-color: #0085A1; }
-
-
-
-  
