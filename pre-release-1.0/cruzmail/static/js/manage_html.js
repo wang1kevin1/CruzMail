@@ -1,6 +1,6 @@
 var myModel = {
     name: "Ashley",
-    test: '', 
+    search_pkg: '', 
     test2: '',
     new_mailstop: '',
     new_route: '',
@@ -168,11 +168,11 @@ var myViewModel = new Vue({
 	    
 	    myViewModel.allTrue = false;
 	    myViewModel.currentView = -1;
-	    console.log(myViewModel.test);
+	    console.log(myViewModel.search_pkg);
 
 	    $.ajax({ type: "POST",
 		     url:  '/query_package' ,
-		     data:{"search": myViewModel.test,
+		     data:{"search": myViewModel.search_pkg,
 		           "index":  myViewModel.index * 10}, 
 		     dataType: 'json',
 		     success: function good(response){
@@ -184,9 +184,9 @@ var myViewModel = new Vue({
 		         for(var key in response.params){
 			     
 			     objHold = response.params[key]
-			     myViewModel.Info.push({a: objHold.a,
-						    b: objHold.b,
-						    c: objHold.c,
+			     myViewModel.Info.push({tracking: objHold.pkg_tracking,
+						    state: objHold.pkg_status,
+						    date_rec: objHold.pkg_date_rec,
 						    name: objHold.name,
 						    mailstop: objHold.mailstop,
 						    sign: objHold.sign,
