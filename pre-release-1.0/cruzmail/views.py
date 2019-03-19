@@ -21,11 +21,10 @@ def query_package(request):
     search = request.POST.get('search')
     index = int(request.POST.get('index'))
     for r in packages_master.objects.all():
-      # TODO: Need to add a delivered field
-        if search is None or (len(search) <= len(r.pkg_tracking) and search == r.pkg_tracking[0:len(search)]):
-            t = dict(tracking = r.pkg_tracking,
-                     status = r.pkg_status,
-                     received = r.pkg_date_rec,
+     if search is None or search == '' or search == r.pkg_tracking:
+            t = dict(pkg_tracking = r.pkg_tracking,
+                     pkg_status = r.pkg_status,
+                     pkg_date_rec = r.pkg_date_rec,
                      name = r.name,
                      mailstop = r.mailstop,
                      sign = r.pkg_sign,
@@ -259,14 +258,14 @@ def delete_users(request):
   return JsonResponse(dict(test="ok"))
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'search.html')
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'search.html')
 
 @login_required(login_url='/account/login')
 def manage(request):
-    return render(request, 'manage.html')
+    return render(request, 'package.html')
 
 @login_required(login_url='/account/login')
 def menu(request):
@@ -281,6 +280,7 @@ def collection(request):
 def mailstop(request):
   return render(request, 'mailstop.html')
 
+@permission_required('people_master.cean_add_user_profile')
 @login_required(login_url='/account/login')
 def person(request):
   return render(request, 'person.html')

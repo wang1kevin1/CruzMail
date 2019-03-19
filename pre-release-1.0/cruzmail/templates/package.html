@@ -42,7 +42,6 @@
 			}
 
 			/* navigation styles start here */
-
 			header {
 				background: var(--background);
 				text-align: center;
@@ -165,7 +164,6 @@
 					background: none;
 					top: initial;
 					left: initial;
-
 					/*grid for where to align title */
 					grid-column: 3 / 4;
 					display: flex;
@@ -205,14 +203,10 @@
 				}
 			}
 
-
 			/*------------------------CSS FOR THE BUTTONS--------------------------------------*/
-
 			button:hover {
 				background: #5c5b5b;
 				cursor: pointer;
-
-
 			}
 		</style>
 		<meta charset="UTF-8">
@@ -220,7 +214,6 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<!-- Compiled and minified CSS -->
 		<!--
-
 		  		-->
 		<title>Cruz Mail</title>
 
@@ -248,8 +241,8 @@
 		<div class="body" style="background-color:#305371; height:20%;"></div>
 
 		&nbsp; &nbsp; &nbsp;Search by Mailstop
-		<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="test">
-		    ${test}
+		<textarea class="list" style="background-color: rgb(236, 236, 250)" v-model="search_pkg">
+		    ${search_pkg}
 	    </textarea>
 
 		<button v-on:click="queryPackage();">Search</button>
@@ -260,7 +253,7 @@
 		<!-- adding new package overlay -->
 		<div id="overlay" v-if="newPackageView==true">
 			<div style="font-size:30px" class="exit_button" v-on:click="newPackageView=false;">
-					<img src="../static/img/tools/exit_button.png">
+				<img src="../static/img/tools/exit_button.png">
 			</div>
 			<div class="new_package" style="overflow:scroll; overflow-x:hidden;">
 				New Package
@@ -335,11 +328,11 @@
 							</div>
 
 							<div v-on:click="currentView = info.index">
-								${info.b}
+								${info.state}
 							</div>
 						</div>
 						<div class="col_title" style="width:35%;" v-on:click="currentView = info.index">
-							${info.a}
+							${info.tracking}
 						</div>
 						<div class="col_title" style="width:35%;" v-on:click="currentView = info.index">
 							${info.mailstop}
@@ -354,11 +347,11 @@
 							</div>
 
 							<div v-on:click="currentView = -1">
-								${info.b}
+								${info.state}
 							</div>
 						</div>
 						<div class="col_title" style="background-color: rgb(0,121,136); width:35%;" v-on:click="currentView = -1">
-							${info.a}
+							${info.tracking}
 						</div>
 						<div class="col_title" style="background-color: rgb(0,121,136); width:35%;" v-on:click="currentView = -1">
 							${info.mailstop}
@@ -386,7 +379,7 @@
 	   				 	</textarea>
 
 						<br>&nbsp;&nbsp;Recieve Date:
-						${info.c}
+						${info.date_rec}
 
 
 						<br>
