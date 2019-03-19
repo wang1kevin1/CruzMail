@@ -32,7 +32,7 @@ CREATE TABLE people_master (
   ppl_email VARCHAR(40) NOT NULL,
   ppl_status ENUM('Available', 'Away') NOT NULL,
   mailstop VARCHAR(20) NOT NULL,
-  FOREIGN KEY (mailstop) REFERENCES mailstops_master(mailstop) ON UPDATE DO NOTHING,
+  FOREIGN KEY (mailstop) REFERENCES mailstops_master(mailstop) ON UPDATE CASCADE,
   PRIMARY KEY (name, mailstop)
 );
 
@@ -47,7 +47,7 @@ CREATE TABLE packages_master (
   pkg_date_rec DATE NOT NULL,
   pkg_date_del DATE NOT NULL,
   pkg_remarks VARCHAR(144),
-  FOREIGN KEY (name) REFERENCES people_master(name) ON UPDATE DO NOTHING,
-  FOREIGN KEY (mailstop) REFERENCES mailstops_master(mailstop) ON UPDATE DO NOTHING,
+  FOREIGN KEY (name) REFERENCES people_master(name) ON UPDATE CASCADE,
+  FOREIGN KEY (mailstop) REFERENCES mailstops_master(mailstop) ON UPDATE CASCADE,
   PRIMARY KEY (pkg_tracking)
 );
