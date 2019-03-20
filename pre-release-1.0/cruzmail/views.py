@@ -1,27 +1,29 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.models import User, Permission
-from django.views.generic import TemplateView
 from django.views.decorators.csrf import csrf_exempt
 from .collection.models import mailstops_master, packages_master, people_master
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required
 
-# PACKAGE VIEWS
+# PACKAGE VIEWS-------------------------------------------------------------------------------------------------------------
 @csrf_exempt
 def query_package(request):
 
+    #make sure user is logged in
     if request.user is None:
       return
-    #if user is not None:
-    #  login(request, user)
+
     params = []    
-    delivered
+
+    #gets the search information if exists
     search = request.POST.get('search')
-    index = int(request.POST.get('index'))
+    index = request.POST.get('index')
+
+    #gets proper queries and stores it into an array
     for r in packages_master.objects.all():
-     if search is None or search == '' or search == r.pkg_tracking:
+        if search is None or search == '' or search == r.pkg_tracking:
             t = dict(pkg_tracking = r.pkg_tracking,
                      pkg_status = r.pkg_status,
                      pkg_date_rec = r.pkg_date_rec,
@@ -32,6 +34,7 @@ def query_package(request):
                      email = r.pkg_email
                     )
             params.append(t)
+
     return JsonResponse(dict(params= params))
 
 @csrf_exempt
@@ -40,9 +43,11 @@ def package_delivered(request):
     if request.user is None:
       return
 
+    #updates package as delievered and saves it
     t = packages_master.objects.get(pkg_tracking=request.POST.get('pkg_tracking'))
     t.pkg_status='delivered'
     t.save()
+
     return JsonResponse(dict(test="ok"))
 
 @csrf_exempt
@@ -51,6 +56,7 @@ def update_package(request):
     if request.user is None:
       return
 
+    #update package information based on the data from request parameter
     t = packages_master.objects.get(pkg_tracking=request.POST.get('track'))
     t.name =       request.POST.get('name')
     t.pkg_email =  request.POST.get('email')
@@ -65,6 +71,8 @@ def add_package(request):
     if request.user is None:
       return
 
+
+    #inputs package information based on the data from request parameter
     packages_master.objects.create(pkg_tracking = request.POST.get('track'),
                                   name = request.POST.get('name'),
                                   mailstop = request.POST.get('mailstop'),
@@ -75,7 +83,7 @@ def add_package(request):
                                   pkg_remarks = request.POST.get('remark'))
     return JsonResponse(dict(test="ok"))
 
-# MAILSTOP VIEWS.
+# MAILSTOP VIEWS-------------------------------------------------------------------------------------------------------------
 @csrf_exempt
 def query_mailstop(request):
 
@@ -146,7 +154,7 @@ def add_mailstop(request):
                                    )
     return JsonResponse(dict(test="ok"))
 
-# PEOPLE (CUSTOMER) VIEWS
+# PEOPLE (CUSTOMER) VIEWS-------------------------------------------------------------------------------------------------------------
 @csrf_exempt
 def query_person(request):
 
@@ -204,7 +212,8 @@ def add_person(request):
     return JsonResponse(dict(test="ok"))
 
 
-# ADMIN VIEWS
+# ADMIN VIEWS-------------------------------------------------------------------------------------------------------------
+
 @csrf_exempt
 def get_users(request):
 
@@ -257,6 +266,8 @@ def delete_users(request):
   
   return JsonResponse(dict(test="ok"))
 
+
+#REDIRECT URLS-------------------------------------------------------------------------------------------------------------
 def index(request):
     return render(request, 'search.html')
 
