@@ -291,7 +291,6 @@ def collection(request):
 def mailstop(request):
   return render(request, 'mailstop.html')
 
-@permission_required('people_master.cean_add_user_profile')
 @login_required(login_url='/account/login')
 def person(request):
   return render(request, 'person.html')
