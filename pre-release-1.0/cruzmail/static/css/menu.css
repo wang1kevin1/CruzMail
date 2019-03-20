@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <style>
-    @import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
+   @import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
 
     :root {
       --background: #2E5A7D
@@ -278,51 +273,3 @@ button:hover:before {
     transition: .7s;
     
  }*/
-  </style>
-
-
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-  <title>Cruz Mail</title>
-
-
-
-  <!--....................... logout and admin redirect buttons .................................-->
-  <header>
-    <h1 class="logo">CruzMail</h1>
-    <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <nav>
-      <ul>
-        <li><a class="nav-link" href="{% url 'collection' %}">Admin</a></li>
-        <li><a class="nav-link" href="{% url 'logging_out' %}">Logout</a></li>
-      </ul>
-    </nav>
-    <label for="nav-toggle" class="nav-toggle-label">
-      <span></span>
-    </label>
-  </header>
-</head>
-
-
-<!--............................. main buttons that redirect user to the specific managing pages .........................-->
-<body>
-  <div class="wrapper">
-    <div class="btn">
-      <button type="button" style="top: 40%; left: 25%;" onclick="window.location.href='/manage'">
-        <img src="../static/img/pages/menu_package.png">Packages</button>
-      <button type="button" style="top: 70%; left: 25%;" onclick="window.location.href='/mailstop'">
-        <img src="../static/img/pages/menu_mailstop.png">Mailstops</button>
-      <button type="button" style="top: 40%; left: 75%;" onclick="window.location.href='/person'">
-        <img src="../static/img/pages/menu_people.png">People</button>
-      <button type="button" style="top: 70%; left: 75%">
-        <img src="../static/img/pages/menu_help.png">Help Center</button>
-    </div>
-  </div>
-</body>
-
-</html>
