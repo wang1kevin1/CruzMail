@@ -44,9 +44,12 @@ def package_delivered(request):
       return
 
     #updates package as delievered and saves it
-    t = packages_master.objects.get(pkg_tracking=request.POST.get('pkg_tracking'))
-    t.pkg_status='delivered'
-    t.save()
+    #t = packages_master.objects.get(pkg_tracking=request.POST.get('pkg_tracking'))
+
+
+    p = packages_master.objects.get(pkg_tracking=request.POST.get('pkg_tracking'))
+    p.pkg_status = 'delivered'
+    p.save()
 
     return JsonResponse(dict(test="ok"))
 
@@ -76,7 +79,7 @@ def add_package(request):
     packages_master.objects.create(pkg_tracking = request.POST.get('track'),
                                   name = request.POST.get('name'),
                                   mailstop = request.POST.get('mailstop'),
-                                  pkg_status = 'recieved',
+                                  pkg_status = 'received',
                                   pkg_sign = request.POST.get('sign'),
                                   pkg_email = request.POST.get('email'),
                                   pkg_weight = '1 to 5',

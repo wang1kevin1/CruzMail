@@ -69,11 +69,12 @@ var myViewModel = new Vue({
 	   
 	 
 	 	//iterates through packages and checks which packages should be marked
-	    for(var key in myViewModel.Info)
+	    for(var key in myViewModel.Info){
+	    	//console.log(myViewModel.Info[key].tracking);
 			if(myViewModel.Info[key].isDelivered)
 		 	   $.ajax({ type: "POST",
 	                  	   url:  '/package_delivered' ,
-	       	                   data:{"pkg_tracking": myViewModel.Info[key].a},
+	       	                   data:{"pkg_tracking": myViewModel.Info[key].tracking},
 	                    	   dataType: 'json',
 	                           success: function no(response){
 	                           },
@@ -81,6 +82,7 @@ var myViewModel = new Vue({
 	                               console.log("invalid inputs\n");
 	                           }
 	                   });
+	    }
 
 	},
 	updatePackage: updatePackages = function(){
@@ -92,7 +94,7 @@ var myViewModel = new Vue({
 	    $.ajax({ type: "POST",
                      url:  '/update_package' ,
                      data:{
-                           "track":  objHold.a,
+                           "track":  objHold.tracking,
 				     	   "email":  objHold.email,
 				     	   "weight": objHold.weight,
 				     	   "name":   objHold.name,
